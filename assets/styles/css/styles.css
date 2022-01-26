@@ -28,6 +28,7 @@ a:focus{
   outline: none;
 
 }
+a.dropdown-item:hover{color:#333 !important}
 a{
   text-decoration: none;
 }

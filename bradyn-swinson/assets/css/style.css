@@ -24,9 +24,14 @@ body {
 	height: 489px
 }
 .img-box1 {
-	margin: 30px 0px 30px 20px;
+	margin: 10px 0px 30px 20px;
 	position: relative;
 }
+.content-box1a{float: left; vertical-align: middle; display: flex;justify-content: center; margin:-80px 0px 0px 0px }
+.content-box1b{float: left; vertical-align: middle; display: flex;justify-content: center; margin:15% 0px 15% 0px; }
+.content-box2{width:100%; float: left;}
+.content-box3{width:100%; float: left; }
+.content-box3 img.f2{    object-fit: contain;  height: 66vh;}
 .mid-pic {
 	position: absolute;
 	top: 190px;
@@ -149,9 +154,12 @@ a.greenbtn1 {
 	font-weight: bold;
 	padding: 0px 0px 0px 10px;
 	border-radius: 14px;
-	display: inline-block;
+
+	
 	position: relative;
-	margin: 110px 0px 0px -60px !important;
+	
+	
+	
 	
 }
 .yellow-btn-box {

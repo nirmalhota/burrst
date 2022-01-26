@@ -2,64 +2,76 @@
 <html>
 
 <head>
-
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Welcome To Burrst</title>
-	<meta property="og:image" content="https://burrst.io/assets/images/logo.png" />
-	<link rel="icon" type="image/x-icon" href="assets/favicons/favicon.ico">
-	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
-	<link rel="icon" type="image/png" sizes="512x512" href="assets/favicons/android-chrome-512x512.png">
-	<link rel="stylesheet" type="text/css" href="assets/vender/boostrap/css/bootstrap.min.css" />
-	<link rel="stylesheet"
-		href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-	<!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="assets/styles/css/styles.css" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome To Burrst</title>
+  <meta property="og:image" content="https://burrst.io/assets/images/logo.png" />
+  <link rel="icon" type="image/x-icon" href="assets/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicons/android-chrome-512x512.png">
+  <link rel="stylesheet" type="text/css" href="assets/vender/boostrap/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="assets/styles/css/styles.css" />
 </head>
 
 <body>
-	<ul id="scene" class="scene" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15">
-		<li class="layer" data-depth="0.11">
-			<div class="background"></div>
-		</li>
-		<li class="layer" data-depth="0.1">
-			<div class=" basket-img">
-				<img src="assets/images/basket.png">
-			</div>
-		</li>
-		<li class="layer" data-depth="0.12">
-			<div class="wave-red">
-				<img src="assets/images/wave-red.png">
-			</div>
-		</li>
-		<li class="layer" data-depth="0.15">
-			<div class=" player">
-				<img src="assets/images/Player.png">
-			</div>
-		</li>
-	</ul>
-	<header style="position: absolute; width: 100%;">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
-			style="background-color: transparent !important">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img src="assets/images/logo.png">
-				</a>
+  <ul id="scene" class="scene" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15">
+    <li class="layer" data-depth="0.11">
+      <div class="background"></div>
+    </li>
+    <li class="layer" data-depth="0.1">
+      <div class=" basket-img"> <img src="assets/images/basket.png"> </div>
+    </li>
+    <li class="layer" data-depth="0.12">
+      <div class="wave-red"> <img src="assets/images/wave-red.png"> </div>
+    </li>
+    <li class="layer" data-depth="0.15">
+      <div class=" player"> <img src="assets/images/Player.png"> </div>
+    </li>
+  </ul>
+  <header style="position: absolute; width: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3" style="background-color: transparent !important">
+      <div class="container-fluid"> <a class="navbar-brand" href="#"> <img src="assets/images/logo.png"> </a>
+        <div class="d-flex ">
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle" href="#"
+                      data-bs-toggle="dropdown"> Athletes </a>
+                    <ul class="dropdown-menu  bg-primary">
+                      <li><a class="dropdown-item" href="bradyn-swinson"> Bradyn Swinson</a></li>
+                      <!-- <li><a class="dropdown-item" href="#"> Coming Soon1</a></li>
+                    <li><a class="dropdown-item" href="#"> Coming Soon2</a></li> -->
+                    </ul>
+                  </li>
+                  <li class="nav-item active"> <a class="nav-link" data-bs-toggle="modal" href="#missionModal">Mission
+                    </a> </li>
+                  <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#manifesto"> Manifesto </a></li>
 
 
+                </ul>
+              </div>
+              <!-- navbar-collapse.// -->
+            </div>
+            <!-- container-fluid.// -->
+          </nav>
 
-				<div class="d-flex ">
-					<ul class="d-flex flex-row navbar-nav">
+          <!--<ul class="d-flex flex-row navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link" type="button" data-bs-toggle="modal" href="#manifesto"
 								role="button">Athletes</a>
 							<ul class="dropdown">
 								<li><a target="_blank" href="bradyn-swinson">Bradyn Swinson</a></li>
-								<!-- <li><a href="#">Coming Soon</a></li> -->
+								<!-- <li><a href="#">Coming Soon</a></li> 
 							</ul>
 						</li>
 						<li class="nav-item">
@@ -71,418 +83,339 @@
 								role="button">Manifesto</a>
 						</li>
 
-					</ul>
+					</ul>-->
 
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<section style="display: flex;height: 100vh;align-items: center;">
-		<div class="social-link">
-			<ul>
-				<li>
-					<a href="https://twitter.com/BurrstSports">
-						<img src="assets/images/twitter.svg">
-					</a>
-				</li>
-				<li>
-					<a href="https://discord.gg/burrstsports">
-						<img src="assets/images/discord-icon.png">
-					</a>
-				</li>
-				<li>
-					<a href="https://www.instagram.com/burrstsports">
-						<img src="assets/images/instagram.svg">
-					</a>
-				</li>
-				<li style="margin-left: 5px;">
-					<a href="https://www.facebook.com/burrstsports">
-						<img style="height:21px" src="assets/images/facebook.svg">
-					</a>
-				</li>
-				<li>
-					<a href="https://linktr.ee/gsapkin">#BurrstOn</a>
-				</li>
-			</ul>
-		</div>
-		<div class="container position-relative">
-			<div class="row">
-				<div class="col-lg-8 col-md-12 col-sm-12">
-					<div class="slider-heading">
-						<h1>Own <span style="color: #f80527;">Digital</span> <br><span
-								style="color: #f80527;">Assets</span> of Your <br>Favorite Athlete</h1>
-						<h4>Made for Athletes. Designed by Athletes.</h4>
-						<div class="type-wrap">
-							<span id="typed" style="white-space:pre;" class="typed">
-							</span>
-						</div>
-						<!-- <button type="button" class="btn btn-light" data-bs-toggle="modal" href="#signupModal"
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section style="display: flex;height: 100vh;align-items: center;">
+    <div class="social-link">
+      <ul>
+        <li> <a href="https://twitter.com/BurrstSports"> <img src="assets/images/twitter.svg"> </a> </li>
+        <li> <a href="https://discord.gg/burrstsports"> <img src="assets/images/discord-icon.png"> </a> </li>
+        <li> <a href="https://www.instagram.com/burrstsports"> <img src="assets/images/instagram.svg"> </a> </li>
+        <li style="margin-left: 5px;"> <a href="https://www.facebook.com/burrstsports"> <img style="height:21px"
+              src="assets/images/facebook.svg"> </a> </li>
+        <li> <a href="https://linktr.ee/gsapkin">#BurrstOn</a> </li>
+      </ul>
+    </div>
+    <div class="container position-relative">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12">
+          <div class="slider-heading">
+            <h1>Own <span style="color: #f80527;">Digital</span> <br>
+              <span style="color: #f80527;">Assets</span> of Your <br>
+              Favorite Athlete
+            </h1>
+            <h4>Made for Athletes. Designed by Athletes.</h4>
+            <div class="type-wrap"> <span id="typed" style="white-space:pre;" class="typed"> </span> </div>
+            <!-- <button type="button" class="btn btn-light" data-bs-toggle="modal" href="#signupModal"
 							role="button">Sign up</button> -->
 
-					</div>
-				</div>
-				<!-- <div class="col-lg-4">
+          </div>
+        </div>
+        <!-- <div class="col-lg-4">
 								
 							</div> -->
-			</div>
-		</div>
-	</section>
-	<!-- ============ sign up modal========== -->
-	<div class="signup_modal modal fade" id="signupModal" aria-hidden="true" aria-labelledby="signupModal"
-		tabindex="-1">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
-					style="background-color: transparent !important">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#">
-							<img src="assets/images/logo.png">
-						</a>
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-							data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="d-flex">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item">
-									<div class="close-container" type="button" data-bs-dismiss="modal"
-										aria-label="Close">
-										<div class="leftright"></div>
-										<div class="rightleft"></div>
-										<label class="close">close</label>
-									</div>
-								</li>
-
-							</ul>
-						</div>
-					</div>
-				</nav>
-
-
-				<section style="display: flex; height: 100vh; align-items: center;">
-					<div class="container position-relative">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="row">
-									<div class="signup-heading">
-										<h1>NFTs Designed For
-											High School <br>& College Athletes</h1>
-										<p>#BurrstOn</p>
-									</div>
-								</div>
-
-								<div class="row d-flex justify-content-center">
-									<div class="col-12 col-md-8 col-xl-5 my-1 p-0">
-										<div class="customInputWrapper mx-3 mx-md-0">
-											<input type="email" class="form-control me-2 customInput ps-4" id="txtEmail"
-												placeholder="email@example.com">
-										</div>
-									</div>
-									<div class="col-5 col-md-2 col-xl-1 my-1 p-0">
-										<div class="customBtnWrapper mx-3 mx-md-0">
-											<button type="submit" class="btn customBtn" id="btnJoinWaitlist">Join
-												Waitlist</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</section>
-			</div>
-		</div>
-	</div>
-	<!-- ============sign up modal========== -->
-	<!-- ============ mission modal========== -->
-	<div class="signup_modal modal fade" id="missionModal" aria-hidden="true" aria-labelledby="missionModal"
-		tabindex="-1">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
-					style="background-color: transparent !important">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#">
-							<img src="assets/images/logo.png">
-						</a>
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-							data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="d-flex">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item">
-									<div class="close-container" type="button" data-bs-dismiss="modal"
-										aria-label="Close">
-										<div class="leftright"></div>
-										<div class="rightleft"></div>
-										<label class="close">close</label>
-									</div>
-								</li>
-
-							</ul>
-						</div>
-					</div>
-				</nav>
-
-
-				<section style="display: flex; height: 100vh; align-items: center;">
-					<div class="container position-relative">
-						<div class="row">
-							<div class="col-lg-6 offset-lg-3 col-md-12 offset-md-3">
-								<div class="row">
-									<div class="misssion-heading">
-										<h1>Our Mission</h1>
-										<p>BurrstSports helps athletes monetize their content in the form of NFTs. We
-											are helping athletes take advantage of their NIL rights by partnering up
-											with us to release NFTs into the digital world. An athlete’s NIL is
-											important as they continue in their career and our creativity helps them
-											separate from the pack. We understand the hard work athletes put in and
-											believe they should be able to promote themselves with compensation in
-											return. Building digital assets one athlete at a time.</p>
-									</div>
-									<!-- <div class="misssion-heading">
+      </div>
+    </div>
+  </section>
+  <!-- ============ sign up modal========== -->
+  <div class="signup_modal modal fade" id="signupModal" aria-hidden="true" aria-labelledby="signupModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
+          style="background-color: transparent !important">
+          <div class="container-fluid"> <a class="navbar-brand" href="#"> <img src="assets/images/logo.png"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"> <span
+                class="navbar-toggler-icon"></span> </button>
+            <div class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <div class="close-container" type="button" data-bs-dismiss="modal" aria-label="Close">
+                    <div class="leftright"></div>
+                    <div class="rightleft"></div>
+                    <label class="close">close</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <section style="display: flex; height: 100vh; align-items: center;">
+          <div class="container position-relative">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="signup-heading">
+                    <h1>NFTs Designed For
+                      High School <br>
+                      & College Athletes</h1>
+                    <p>#BurrstOn</p>
+                  </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <div class="col-12 col-md-8 col-xl-5 my-1 p-0">
+                    <div class="customInputWrapper mx-3 mx-md-0">
+                      <input type="email" class="form-control me-2 customInput ps-4" id="txtEmail"
+                        placeholder="email@example.com">
+                    </div>
+                  </div>
+                  <div class="col-5 col-md-2 col-xl-1 my-1 p-0">
+                    <div class="customBtnWrapper mx-3 mx-md-0">
+                      <button type="submit" class="btn customBtn" id="btnJoinWaitlist">Join
+                        Waitlist</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- ============sign up modal========== -->
+  <!-- ============ mission modal========== -->
+  <div class="signup_modal modal fade" id="missionModal" aria-hidden="true" aria-labelledby="missionModal"
+    tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
+          style="background-color: transparent !important">
+          <div class="container-fluid"> <a class="navbar-brand" href="#"> <img src="assets/images/logo.png"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"> <span
+                class="navbar-toggler-icon"></span> </button>
+            <div class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <div class="close-container" type="button" data-bs-dismiss="modal" aria-label="Close">
+                    <div class="leftright"></div>
+                    <div class="rightleft"></div>
+                    <label class="close">close</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <section style="display: flex; height: 100vh; align-items: center;">
+          <div class="container position-relative">
+            <div class="row">
+              <div class="col-lg-6 offset-lg-3 col-md-12 offset-md-3">
+                <div class="row">
+                  <div class="misssion-heading">
+                    <h1>Our Mission</h1>
+                    <p>BurrstSports helps athletes monetize their content in the form of NFTs. We
+                      are helping athletes take advantage of their NIL rights by partnering up
+                      with us to release NFTs into the digital world. An athlete’s NIL is
+                      important as they continue in their career and our creativity helps them
+                      separate from the pack. We understand the hard work athletes put in and
+                      believe they should be able to promote themselves with compensation in
+                      return. Building digital assets one athlete at a time.</p>
+                  </div>
+                  <!-- <div class="misssion-heading">
 											<h1>Our Focus</h1>
 											<p>
 												We partner up with athletes to create an NFT that is unique and innovative. An athlete’s NIL is important as they continue in their career and our creativity helps them separate from the pack. Building digital assets one athlete at a time.
 											</p>
 										</div> -->
-								</div>
-							</div>
-						</div>
-					</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- ============mission modal========== -->
+  <!-- ============ Manifesto modal========== -->
+  <div class="signup_modal modal fade" id="manifesto" aria-hidden="true" aria-labelledby="manifesto" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
+          style="background-color: transparent !important">
+          <div class="container-fluid"> <a class="navbar-brand" href="#"> <img src="assets/images/logo.png"> </a>
+            <div class="d-flex">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <div class="close-container" type="button" data-bs-dismiss="modal" aria-label="Close">
+                    <div class="leftright"></div>
+                    <div class="rightleft"></div>
+                    <label class="close">close</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <section>
+          <div class="container position-relative">
+            <div class="row">
+              <div class="col-lg-8 offset-lg-2">
+                <div class="row">
+                  <div class="manifesto-heading mt-5">
+                    <h1>Manifesto</h1>
+                    <h2>We love playing & watching sports.</h2>
+                    <p> Sports allow us to bond. <br>
+                      Sports allow for new relationships to form. <br>
+                      Sports spark up conversations. <br>
+                      Whether you are at a basketball game in Chicago or Australia it doesn’t
+                      matter. <br>
+                      You can relate with people at the game. <br>
+                      Games are streamed from all over the world. <br>
+                      The digital era allows you to watch a game at your fingertips. <br>
+                      That is power. <br>
+                    </p>
+                  </div>
+                  <div class="manifesto-heading">
+                    <h2>Athletes do not have control over their NIL</h2>
+                    <p> For decades high school and college athletes would have to abide by rules
+                      and laws on how, when, and what they can promote of themselves. <br>
+                      They could never be compensated for their name, image, or likeness. <br>
+                      Every single day an athlete would make a sacrifice to sharpen and perfect
+                      their game. <br>
+                      It was a choice every athlete made without any compensation. <br>
+                      Focus, grit, discipline, courage and determination to get to the next level.
+                      At the professional level they would be paid based on their value. <br>
+                      But why not sooner? </p>
+                  </div>
+                  <div class="manifesto-heading">
+                    <h2>BurrstSports is here to change that</h2>
+                    <p> We believe every athlete should be able to promote themselves and be
+                      compensated. <br>
+                      They shouldn’t have to wait until being a professional athlete because what
+                      about the athletes who didn’t make it? <br>
+                      The sacrifice to put in all that work and be cut short. <br>
+                      We are here to encourage athletes to still play and work hard but to be able
+                      to create digital assets that bring in profit. <br>
+                      We are here to create Digital Assets that allow fans to show financial
+                      support for their favorite athletes and to allow athletes to give back to
+                      their community. <br>
+                      We are here to design NFTs with athletes that show the world they are more
+                      than just an athlete. <br>
+                      Made for athletes. Designed by athletes. The time is now. <br>
+                      #BurrstOn </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- ============Manifesto modal========== -->
 
-				</section>
-			</div>
-		</div>
-	</div>
-	<!-- ============mission modal========== -->
-	<!-- ============ Manifesto modal========== -->
-	<div class="signup_modal modal fade" id="manifesto" aria-hidden="true" aria-labelledby="manifesto" tabindex="-1">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5 my-3"
-					style="background-color: transparent !important">
-					<div class="container-fluid">
-						<a class="navbar-brand" href="#">
-							<img src="assets/images/logo.png">
-						</a>
+  </div>
+  <!-- Scripts -->
 
-						<div class="d-flex">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item">
-									<div class="close-container" type="button" data-bs-dismiss="modal"
-										aria-label="Close">
-										<div class="leftright"></div>
-										<div class="rightleft"></div>
-										<label class="close">close</label>
-									</div>
-								</li>
+  <script src="assets/vender/boostrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/scripts/js/libraries.min.js"></script>
+  <script src="assets/scripts/js/jquery.parallax.js"></script>
+  <script>
 
-							</ul>
-						</div>
-					</div>
-				</nav>
+    // jQuery Selections
+    var $html = $('html'),
+      $container = $('#container'),
+      $prompt = $('#prompt'),
+      $toggle = $('#toggle'),
+      $about = $('#about'),
+      $scene = $('#scene');
 
+    // Hide browser menu.
+    (function () {
+      setTimeout(function () { window.scrollTo(0, 0); }, 0);
+    })();
 
-				<section>
-					<div class="container position-relative">
-						<div class="row">
-							<div class="col-lg-8 offset-lg-2">
-								<div class="row">
-									<div class="manifesto-heading mt-5">
-										<h1>Manifesto</h1>
-										<h2>We love playing & watching sports.</h2>
-										<p>
-											Sports allow us to bond.
-											<br>
-											Sports allow for new relationships to form.
-											<br>
-											Sports spark up conversations.
-											<br>
-											Whether you are at a basketball game in Chicago or Australia it doesn’t
-											matter.
-											<br>
-											You can relate with people at the game.
-											<br>
-											Games are streamed from all over the world.
-											<br>
-											The digital era allows you to watch a game at your fingertips.
-											<br>
-											That is power.
-											<br>
-										</p>
-									</div>
-									<div class="manifesto-heading">
-										<h2>Athletes do not have control over their NIL</h2>
-										<p>
-											For decades high school and college athletes would have to abide by rules
-											and laws on how, when, and what they can promote of themselves.
-											<br>
-											They could never be compensated for their name, image, or likeness.
-											<br>
-											Every single day an athlete would make a sacrifice to sharpen and perfect
-											their game.
-											<br>
-											It was a choice every athlete made without any compensation.
-											<br>
-											Focus, grit, discipline, courage and determination to get to the next level.
-											At the professional level they would be paid based on their value.
-											<br>
-											But why not sooner?
-										</p>
-									</div>
-									<div class="manifesto-heading">
-										<h2>BurrstSports is here to change that</h2>
-										<p>
-											We believe every athlete should be able to promote themselves and be
-											compensated.
-											<br>
-											They shouldn’t have to wait until being a professional athlete because what
-											about the athletes who didn’t make it?
-											<br>
-											The sacrifice to put in all that work and be cut short.
-											<br>
-											We are here to encourage athletes to still play and work hard but to be able
-											to create digital assets that bring in profit.
-											<br>
-											We are here to create Digital Assets that allow fans to show financial
-											support for their favorite athletes and to allow athletes to give back to
-											their community.
-											<br>
-											We are here to design NFTs with athletes that show the world they are more
-											than just an athlete.
-											<br>
-											Made for athletes. Designed by athletes. The time is now.
-											<br>
-											#BurrstOn
-										</p>
-									</div>
-								</div>
-							</div>
+    // Setup FastClick.
+    FastClick.attach(document.body);
 
-						</div>
-					</div>
+    // Add touch functionality.
+    if (Hammer.HAS_TOUCHEVENTS) {
+      $container.hammer({ drag_lock_to_axis: true });
+      _.tap($html, 'a,button,[data-tap]');
+    }
 
-				</section>
-			</div>
-		</div>
-	</div>
-	<!-- ============Manifesto modal========== -->
+    // Add touch or mouse class to html element.
+    $html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
 
+    // Resize handler.
+    (resize = function () {
+      $scene[0].style.width = window.innerWidth + 'px';
+      $scene[0].style.height = window.innerHeight + 'px';
+      if (!$prompt.hasClass('hide')) {
+        if (window.innerWidth < 600) {
+          $toggle.addClass('hide');
+        } else {
+          $toggle.removeClass('hide');
+        }
+      }
+    })();
 
+    // Attach window listeners.
+    window.onresize = _.debounce(resize, 200);
+    window.onscroll = _.debounce(resize, 200);
 
+    function showDetails() {
+      $about.removeClass('hide');
+      $toggle.removeClass('i');
+    }
 
-	</div>
-	<!-- Scripts -->
+    function hideDetails() {
+      $about.addClass('hide');
+      $toggle.addClass('i');
+    }
 
-	<script src="assets/vender/boostrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/scripts/js/libraries.min.js"></script>
-	<script src="assets/scripts/js/jquery.parallax.js"></script>
+    // Listen for toggle click event.
+    $toggle.on('click', function (event) {
+      $toggle.hasClass('i') ? showDetails() : hideDetails();
+    });
 
-	<script>
+    // Pretty simple huh?
+    $scene.parallax();
 
-		// jQuery Selections
-		var $html = $('html'),
-			$container = $('#container'),
-			$prompt = $('#prompt'),
-			$toggle = $('#toggle'),
-			$about = $('#about'),
-			$scene = $('#scene');
-
-		// Hide browser menu.
-		(function () {
-			setTimeout(function () { window.scrollTo(0, 0); }, 0);
-		})();
-
-		// Setup FastClick.
-		FastClick.attach(document.body);
-
-		// Add touch functionality.
-		if (Hammer.HAS_TOUCHEVENTS) {
-			$container.hammer({ drag_lock_to_axis: true });
-			_.tap($html, 'a,button,[data-tap]');
-		}
-
-		// Add touch or mouse class to html element.
-		$html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
-
-		// Resize handler.
-		(resize = function () {
-			$scene[0].style.width = window.innerWidth + 'px';
-			$scene[0].style.height = window.innerHeight + 'px';
-			if (!$prompt.hasClass('hide')) {
-				if (window.innerWidth < 600) {
-					$toggle.addClass('hide');
-				} else {
-					$toggle.removeClass('hide');
-				}
-			}
-		})();
-
-		// Attach window listeners.
-		window.onresize = _.debounce(resize, 200);
-		window.onscroll = _.debounce(resize, 200);
-
-		function showDetails() {
-			$about.removeClass('hide');
-			$toggle.removeClass('i');
-		}
-
-		function hideDetails() {
-			$about.addClass('hide');
-			$toggle.addClass('i');
-		}
-
-		// Listen for toggle click event.
-		$toggle.on('click', function (event) {
-			$toggle.hasClass('i') ? showDetails() : hideDetails();
-		});
-
-		// Pretty simple huh?
-		$scene.parallax();
-
-		// Check for orientation support.
-		setTimeout(function () {
-			if ($scene.data('mode') === 'cursor') {
-				$prompt.removeClass('hide');
-				if (window.innerWidth < 600) $toggle.addClass('hide');
-				$prompt.on('click', function (event) {
-					$prompt.addClass('hide');
-					if (window.innerWidth < 600) {
-						setTimeout(function () {
-							$toggle.removeClass('hide');
-						}, 1200);
-					}
-				});
-			}
-		}, 1000);
+    // Check for orientation support.
+    setTimeout(function () {
+      if ($scene.data('mode') === 'cursor') {
+        $prompt.removeClass('hide');
+        if (window.innerWidth < 600) $toggle.addClass('hide');
+        $prompt.on('click', function (event) {
+          $prompt.addClass('hide');
+          if (window.innerWidth < 600) {
+            setTimeout(function () {
+              $toggle.removeClass('hide');
+            }, 1200);
+          }
+        });
+      }
+    }, 1000);
 
 
-		// Facebook stuff.
-		(function (d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js'></script>
-	<script src="assets//scripts/js/myScript.js"></script>
-	<div id="root">
-		<script src="https://unpkg.com/waitlistapi/dist/widget.js" id="Waitlist-API-Script" data-config="{
+    // Facebook stuff.
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js'></script>
+  <script src="assets//scripts/js/myScript.js"></script>
+  <div id="root">
+    <script src="https://unpkg.com/waitlistapi/dist/widget.js" id="Waitlist-API-Script" data-config="{
 			'name': 'w1', 
 			'api_key': 'A4EOLP', 
 			'waitlist_link': 'https://burrst.io/',
 			'config': {'targetElementId': 'root'},
 			'joinWaitlistHeading': ' '
 		}">
-		</script>
+    </script>
 </body>
 
 </html>

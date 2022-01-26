@@ -261,17 +261,7 @@
     /* insert styles here */
 }
 @media  (min-width: 1441px) and (max-width: 1680px) {
-#yellow-btn1 {
-	background: #ffcc33;
-	color: #000;
-	font-weight: bold;
-	padding: 0px 0px 0px 10px;
-	border-radius: 14px;
-	display: inline-block;
-	position: relative;
-	margin: 100px 0px 0px -60px;
-	
-}
+
 	.hero-leftpic img {
 		object-fit: contain;
 		height: 100vh
@@ -357,17 +347,7 @@
 }
 
 @media  (min-width: 1681px) and (max-width: 1920px)  {
-	#yellow-btn1 {
-	background: #ffcc33;
-	color: #000;
-	font-weight: bold;
-	padding: 0px 0px 0px 10px;
-	border-radius: 14px;
-	display: inline-block;
-	position: relative;
-	margin: 140px 0px 0px -60px !important;
-	
-}
+
 	.hero-leftpic img {
 		object-fit: contain;
 		height: 100vh
@@ -470,14 +450,21 @@
 	font-weight: bold;
 	padding: 0px 0px 0px 20px !important;
 	border-radius: 24px;
-	display: inline-block;
+	
 	position: relative;
-z-index: 500000;
+
 		top:0px;
-		
-			margin: 10px 30px 0px 80px !important;
+		margin: 10px auto !important;
 	
 }
+	.right-pad1 {
+    padding-right: 20px !important;
+	padding-left: 20px  !important;
+    position: relative;
+    z-index: 5000000;
+}
+	.content-box1a{ width: 100% !important; text-align: center; margin:0px 0px 0px 0px !important}
+	.content-box1b{width: 100% !important; text-align: center}
 	.picon3 {
     height: 7vh !important;
 }
