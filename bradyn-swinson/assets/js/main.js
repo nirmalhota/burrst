@@ -1,3 +1,5 @@
+const { SlowBuffer } = require("buffer");
+
 /**
 * Template Name: Gp - v4.7.0
 * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -6,7 +8,6 @@
 */
 (function() {
   "use strict";
-
   /**
    * Easy selector helper function
    */
@@ -89,7 +90,6 @@
     window.addEventListener('load', headerScrolled)
     onscroll(document, headerScrolled)
   }
-
   /**
    * Back to top button
    */
