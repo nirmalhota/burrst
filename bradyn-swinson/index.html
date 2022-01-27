@@ -102,9 +102,9 @@
             <div class="content-box1b">
               <div id="yellow-btn1">
                 <div class="yellow-btn-box">
-                  <span style="padding-left: 17px;" class="g-txt" id="items-rem">100/100</span><br>
+                  <span style="padding-left: 17px;" class="g-txt" id="items-rem">100/101</span><br>
                   <div style="padding-left: 17px;" class="b-txt"> Available</div><i
-                    class="bi bi-dash-circle-fill"></i>&nbsp;1&nbsp;<i class="bi bi-plus-circle-fill"></i>&nbsp;1.5 SOL
+                    class="bi bi-dash-circle-fill" id="sub"></i>&nbsp;<span id="qty">1</span>&nbsp;<i class="bi bi-plus-circle-fill" id="add"></i>&nbsp;<span id="sol-amt">1.5 SOL</span>
                 </div>
                 &nbsp;&nbsp;
                 <div class="yellow-btn-box"><a href="#" class="greenbtn1" id="mint-btn"> <img src="assets/img/picon1.png"
@@ -280,8 +280,29 @@
       $scene = $('#scene'),
       $connectBtn = $("#connect-btn"),
       $itemsRem = $("#items-rem"),
-      $mintBtn = $("#mint-btn");
+      $mintBtn = $("#mint-btn"),
+      $addBtn = $("#add"),
+      $subBtn = $("#sub"),
+      $amtBtn = $("#sol-amt"),
+      $qty = $("#qty");
 
+      $addBtn.click(function() {
+        const quantity = parseInt($qty.text()) + 1;
+        if(quantity > 3) {
+          return;
+        }
+        $qty.text(quantity.toString());
+        $amtBtn.text(`${1.5*quantity} SOL`);
+      });
+
+      $subBtn.click(function() {
+        const quantity = parseInt($qty.text()) - 1;
+        if(quantity < 1) {
+          return;
+        }
+        $qty.text(quantity.toString());
+        $amtBtn.text(`${1.5*quantity} SOL`);
+      });
       $connectBtn.click(async function() {
         const resp = await sol.connect();
         if(resp.status === 0) {
@@ -297,15 +318,16 @@
 
       async function setItems() {
         while(true) {
-          await sleep(6000);
           const itemsRemaining = await sol.getItemsRemaining();
           //console.log('items remaining: ',itemsRemaining);
-          $itemsRem.text(`${itemsRemaining}/100`);
+          $itemsRem.text(`${itemsRemaining}/101`);
+          await sleep(6000);
         }
       }
 
       $mintBtn.click(function() {
-        sol.mintBradynNft(function(res) {
+        const quantity = parseInt($qty.text());
+        sol.mintBradynNft(quantity,function(res) {
           alert(res.message);
         }) 
       });

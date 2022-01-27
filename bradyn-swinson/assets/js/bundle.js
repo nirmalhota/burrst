@@ -55319,7 +55319,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getNetworkExpire": () => (/* binding */ getNetworkExpire),
 /* harmony export */   "getAtaForMint": () => (/* binding */ getAtaForMint),
 /* harmony export */   "getCandyMachineState": () => (/* binding */ getCandyMachineState),
-/* harmony export */   "mintOneToken": () => (/* binding */ mintOneToken)
+/* harmony export */   "mint": () => (/* binding */ mint)
 /* harmony export */ });
 /* harmony import */ var _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
@@ -56253,7 +56253,7 @@ var getMetadata = /*#__PURE__*/function () {
   };
 }();
 
-var mintOneToken = /*#__PURE__*/function () {
+var mint = /*#__PURE__*/function () {
   var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(candyMachine, payer) {
     var mint, userTokenAccountAddress, userPayingAccountAddress, candyMachineAddress, remainingAccounts, signers, cleanupInstructions, instructions, _mint, whitelistToken, whitelistBurnAuthority, exists, transferAuthority, metadataAddress, masterEdition, _yield$getCandyMachin, _yield$getCandyMachin2, candyMachineCreator, creatorBump;
 
@@ -56482,10 +56482,12 @@ var mintOneToken = /*#__PURE__*/function () {
     }, _callee9);
   }));
 
-  return function mintOneToken(_x23, _x24) {
+  return function mint(_x23, _x24) {
     return _ref11.apply(this, arguments);
   };
 }();
+
+function executeInstructions() {}
 
 /***/ })
 /******/ 	]);
@@ -56611,7 +56613,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var network = 'https://api.mainnet-beta.solana.com';
+
+var network = 'https://api.mainnet-beta.solana.com'; //const network = 'https://api.devnet.solana.com';
+
 var connection = new _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.Connection(network);
 window.isConnected = false;
 /*
@@ -56724,72 +56728,124 @@ function getState(candyMachineId) {
 */
 
 
-function mintToken(_x, _x2) {
+function mintToken(_x, _x2, _x3) {
   return _mintToken.apply(this, arguments);
 }
+/*
+
+export interface CandyMachine {
+  id: anchor.web3.PublicKey,
+  connection: anchor.web3.Connection;
+  program: anchor.Program;
+}
+*/
+
 
 function _mintToken() {
-  _mintToken = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(candyMachineId, callback) {
+  _mintToken = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(candyMachineId, callback, quantity) {
     var provider, idl, program;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             if (window.solana.publicKey) {
-              _context2.next = 3;
+              _context3.next = 3;
               break;
             }
 
-            _context2.next = 3;
+            _context3.next = 3;
             return connect();
 
           case 3:
             provider = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Provider(connection, getAnchorWallet(), {
               preflightCommitment: 'recent'
             });
-            _context2.prev = 4;
-            _context2.next = 7;
+            _context3.prev = 4;
+            _context3.next = 7;
             return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider);
 
           case 7:
-            idl = _context2.sent;
-            _context2.next = 14;
+            idl = _context3.sent;
+            _context3.next = 14;
             break;
 
           case 10:
-            _context2.prev = 10;
-            _context2.t0 = _context2["catch"](4);
+            _context3.prev = 10;
+            _context3.t0 = _context3["catch"](4);
             //console.error(e);
             callback({
               status: 6,
               message: 'error code(6)! could not mint token!'
             }); //alert('error code(6)! could not mint token!');
 
-            return _context2.abrupt("return");
+            return _context3.abrupt("return");
 
           case 14:
             program = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Program(idl, CANDY_MACHINE_PROGRAM, provider);
-            getState(candyMachineId).then(function (acc) {
-              //console.log('acc is: ',acc);
-              var candyMachineAccount = {
-                id: new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey(candyMachineId),
-                program: program,
-                state: acc.state
+            getState(candyMachineId).then( /*#__PURE__*/function () {
+              var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(acc) {
+                var cb, i, candyMachineAccount, res;
+                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                  while (1) {
+                    switch (_context2.prev = _context2.next) {
+                      case 0:
+                        //console.log('acc is: ',acc);
+                        cb = null;
+                        i = 0;
+
+                      case 2:
+                        if (!(i < quantity)) {
+                          _context2.next = 18;
+                          break;
+                        }
+
+                        candyMachineAccount = {
+                          id: new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey(candyMachineId),
+                          program: program,
+                          state: acc.state
+                        };
+                        _context2.prev = 4;
+                        _context2.next = 7;
+                        return (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__.mint)(candyMachineAccount, window.solana.publicKey);
+
+                      case 7:
+                        res = _context2.sent;
+                        cb = {
+                          status: 0,
+                          message: 'success!'
+                        };
+                        _context2.next = 15;
+                        break;
+
+                      case 11:
+                        _context2.prev = 11;
+                        _context2.t0 = _context2["catch"](4);
+                        cb = {
+                          status: 5,
+                          message: 'error code(5)! could not mint token!'
+                        };
+                        return _context2.abrupt("break", 18);
+
+                      case 15:
+                        i++;
+                        _context2.next = 2;
+                        break;
+
+                      case 18:
+                        callback(cb);
+
+                      case 19:
+                      case "end":
+                        return _context2.stop();
+                    }
+                  }
+                }, _callee2, null, [[4, 11]]);
+              }));
+
+              return function (_x4) {
+                return _ref.apply(this, arguments);
               };
-              (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__.mintOneToken)(candyMachineAccount, window.solana.publicKey).then(function (res) {
-                //console.log(res instanceof Error);
-                callback({
-                  status: 0,
-                  message: 'success!'
-                }); //alert('success!');
-              })["catch"](function (err) {
-                console.error(err);
-                callback({
-                  status: 5,
-                  message: 'error code(5)! could not mint token!'
-                }); //alert('error code(5)! could not mint token!');
-              });
-            })["catch"](function (err) {
+            }())["catch"](function (err) {
               console.error(err);
               callback({
                 status: 4,
@@ -56799,10 +56855,10 @@ function _mintToken() {
 
           case 16:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2, null, [[4, 10]]);
+    }, _callee3, null, [[4, 10]]);
   }));
   return _mintToken.apply(this, arguments);
 }
@@ -56810,39 +56866,50 @@ function _mintToken() {
 var CANDY_MACHINE_1 = '5rdSYCxms1F9rv2c32m2s9UdBj6eLhH4HQVAiuBDaL24'; // mints the one token for bradyn
 
 var CANDY_MACHINE_2 = 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'; // mints 100 tokens for users
+//const CANDY_MACHINE_2 = 'GPk1m3uyKWYHjSK3mMVTMF3R52ntg7b5FsVDYsaqW5M6'; // mints 100 tokens for users
+
+/*
+export const mintMultipleToken = async (
+  candyMachine: any,
+  config: anchor.web3.PublicKey,
+  payer: anchor.web3.PublicKey,
+  treasury: anchor.web3.PublicKey,
+  quantity: number = 2
+)
+*/
 
 function getItemsRemaining() {
   return _getItemsRemaining.apply(this, arguments);
 }
 
 function _getItemsRemaining() {
-  _getItemsRemaining = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+  _getItemsRemaining = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
     var account2;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
-            _context3.next = 2;
+            _context4.next = 2;
             return getState(CANDY_MACHINE_2);
 
           case 2:
-            account2 = _context3.sent;
-            return _context3.abrupt("return",
+            account2 = _context4.sent;
+            return _context4.abrupt("return",
             /*account1.state.itemsRemaining + */
             account2.state.itemsRemaining);
 
           case 4:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
-    }, _callee3);
+    }, _callee4);
   }));
   return _getItemsRemaining.apply(this, arguments);
 }
 
-function mintBradynNft(callback) {
-  mintToken(CANDY_MACHINE_2, callback);
+function mintBradynNft(quantity, callback) {
+  mintToken(CANDY_MACHINE_2, callback, quantity);
 }
 
 function testData() {
@@ -56850,23 +56917,23 @@ function testData() {
 }
 
 function _testData() {
-  _testData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+  _testData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
     var signatures, data;
-    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context5.prev = _context5.next) {
           case 0:
-            _context4.next = 2;
+            _context5.next = 2;
             return connection.getConfirmedSignaturesForAddress2(new _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.PublicKey('DaDBYoyLKCw36kPrzZQ52noAwsCJnLb1ty5znqRic9Nh'));
 
           case 2:
-            signatures = _context4.sent;
+            signatures = _context5.sent;
             console.log(signatures);
-            _context4.next = 6;
+            _context5.next = 6;
             return connection.getParsedConfirmedTransaction('468mHkxW4EjgVh5BC8M3LeaydQbAn6y7qkufVh4kzYuwiFgFryGf9LuFWeFfgz1UAoVcc67UEF2NuorkMREdoucs');
 
           case 6:
-            data = _context4.sent;
+            data = _context5.sent;
             console.log(data.transaction.message.accountKeys);
             data.transaction.message.accountKeys.forEach(function (accountKey) {
               console.log(accountKey.pubkey.toBase58());
@@ -56874,10 +56941,10 @@ function _testData() {
 
           case 9:
           case "end":
-            return _context4.stop();
+            return _context5.stop();
         }
       }
-    }, _callee4);
+    }, _callee5);
   }));
   return _testData.apply(this, arguments);
 }
@@ -56893,31 +56960,31 @@ function testLaunch() {
 
 
 function _testLaunch() {
-  _testLaunch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+  _testLaunch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
     var itemsRemaining, state;
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
-        switch (_context5.prev = _context5.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
-            _context5.next = 2;
+            _context6.next = 2;
             return getItemsRemaining();
 
           case 2:
-            itemsRemaining = _context5.sent;
-            _context5.next = 5;
+            itemsRemaining = _context6.sent;
+            _context6.next = 5;
             return getState(CANDY_MACHINE_2);
 
           case 5:
-            state = _context5.sent;
+            state = _context6.sent;
             console.log('state: ', state);
             console.log('items: ', itemsRemaining);
 
           case 8:
           case "end":
-            return _context5.stop();
+            return _context6.stop();
         }
       }
-    }, _callee5);
+    }, _callee6);
   }));
   return _testLaunch.apply(this, arguments);
 }
