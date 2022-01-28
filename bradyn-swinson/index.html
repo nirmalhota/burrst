@@ -297,6 +297,7 @@
   <script src="assets/js/libraries.min.js"></script>
   <script src="assets/js/jquery.parallax.js"></script>
   <script src="./assets/js/bundle.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
   <script>
     // jQuery Selections
     var $html = $('html'),
@@ -345,9 +346,10 @@
       //$amtBtn.text(`${1.5 * quantity} SOL`);
     });
     $connectBtn.click(async function () {
-      var isMobile = (navigator.platform.toUpperCase().indexOf('MAC')==-1 && 
-      navigator.platform.toUpperCase().indexOf('WIN')==-1 && 
-      navigator.platform.toUpperCase().indexOf('LINUX')==-1);
+      // var isMobile = (navigator.platform.toUpperCase().indexOf('MAC')==-1 && 
+      // navigator.platform.toUpperCase().indexOf('WIN')==-1 && 
+      // navigator.platform.toUpperCase().indexOf('LINUX')==-1);
+      var isMobile = $.browser.mobile;
       console.log(navigator.platform.toUpperCase());
       console.log(isMobile);
       if(!!isMobile){
