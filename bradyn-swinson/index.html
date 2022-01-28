@@ -89,7 +89,7 @@
         </div>
         <div class="col-xl-7 col-lg-8 col-sm-12 right-pad1  hero-rightpic">
           <div class="content-box2">
-            <div class=" alignr">
+            <div class=" alignr" id="connect-btn-div">
               <h1 class="new-marg3">BRADYN <span class="green-txt">SWINSON</span></h1>
               <a href="#" class="greenbtn" id="connect-btn"><span class="b1">CONNECT<span class="y1">WALLET</span>
                 </span><span class="c1"><img src="assets/img/wallet-icon.png" class=" img-fluid picon3"
@@ -311,6 +311,17 @@
       $amtBtn = $("#sol-amt"),
       $qty = $("#qty");
 
+
+    const whenNotConnected = `<a href="#" class="greenbtn" id="connect-btn"><span class="b1">CONNECT<span class="y1">WALLET</span>
+              </span><span class="c1"><img src="assets/img/wallet-icon.png" class=" img-fluid picon3"
+                  alt="wallet" /></span></a>`
+    const whenConnected = `<a href="#" class="dgreenbtn"><span class="b2">WALLET IS<span class="y2">CONNECTED</span> </span><span
+              class="c2"><img src="assets/img/wallet-icon1.png" class=" img-fluid picon3" alt="wallet" /></span></a>`
+    console.log();
+    if(window.localStorage.getItem("isConnected")) {
+      $("#connect-btn").remove();
+      $("#connect-btn-div").append(whenConnected);
+    }
     $addBtn.click(function () {
       const quantity = parseInt($qty.text()) + 1;
       if (quantity > 3) {
@@ -334,8 +345,11 @@
     $connectBtn.click(async function () {
       const resp = await sol.connect();
       if (resp.status === 0) {
-        alert('connected!');
+        $("#connect-btn").remove();
+        $("#connect-btn-div").append(whenConnected);
+        window.localStorage.setItem("isConnected",true);
       } else {
+        window.localStorage.setItem("isConnected",false);
         alert('some error occurred, could not connect!');
       }
     });
