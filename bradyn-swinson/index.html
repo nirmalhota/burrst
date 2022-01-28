@@ -105,7 +105,7 @@
             <div class="content-box1b">
               <div id="yellow-btn1">
                 <div class="yellow-btn-box">
-                  <span style="padding-left: 17px;" class="g-txt" id="items-rem">100/101</span><br>
+                  <span style="padding-left: 17px;" class="g-txt" id="items-rem">___/101</span><br>
                   <div style="padding-left: 17px;" class="b-txt"> Available</div><i class="bi bi-dash-circle-fill"
                     id="sub"></i>&nbsp;<span id="qty">1</span>&nbsp;<i class="bi bi-plus-circle-fill"
                     id="add"></i>&nbsp;<span id="sol-amt">1.5 SOL</span>
@@ -314,6 +314,8 @@
       $amtBtn = $("#sol-amt"),
       $qty = $("#qty");
 
+    setItems();
+    refreshItems();
 
     const whenNotConnected = `<a href="#" class="greenbtn" id="connect-btn"><span class="b1">CONNECT<span class="y1">WALLET</span>
               </span><span class="c1"><img src="assets/img/wallet-icon.png" class=" img-fluid picon3"
@@ -346,9 +348,6 @@
       //$amtBtn.text(`${1.5 * quantity} SOL`);
     });
     $connectBtn.click(async function () {
-      // var isMobile = (navigator.platform.toUpperCase().indexOf('MAC')==-1 && 
-      // navigator.platform.toUpperCase().indexOf('WIN')==-1 && 
-      // navigator.platform.toUpperCase().indexOf('LINUX')==-1);
       var isMobile = $.browser.mobile;
       console.log(navigator.platform.toUpperCase());
       console.log(isMobile);
@@ -371,13 +370,15 @@
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function setItems() {
-      while (true) {
-        const itemsRemaining = await sol.getItemsRemaining();
-        //console.log('items remaining: ',itemsRemaining);
-        $itemsRem.text(`${itemsRemaining}/101`);
-        await sleep(6000);
-      }
+    function setItems() {
+        sol.getItemsRemaining().then((itemsRemaining) => {
+          console.log(itemsRemaining);
+          $itemsRem.text(itemsRemaining + '/101');
+        });
+    }
+
+    function refreshItems(){
+      setInterval(()=>{ setItems()},6000);
     }
 
     $mintBtn.click(function (e) {
@@ -387,7 +388,6 @@
       })
     });
 
-    setItems();
 
     // Hide browser menu.
     (function () {
