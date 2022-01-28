@@ -311,45 +311,15 @@
       $amtBtn = $("#sol-amt"),
       $qty = $("#qty");
 
-<<<<<<< HEAD
-      $addBtn.click(function() {
-        const quantity = parseInt($qty.text()) + 1;
-        if(quantity > 3) {
-          return;
-        }
-        $qty.text(quantity.toString());
-        var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
-        $amtBtn.text(`${amount} SOL`);
-      });
-
-      $subBtn.click(function() {
-        const quantity = parseInt($qty.text()) - 1;
-        if(quantity < 1) {
-          return;
-        }
-        $qty.text(quantity.toString());
-        //$amtBtn.text(`${1.5*quantity} SOL`);
-        var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
-        $amtBtn.text(`${amount} SOL`);        
-      });
-      $connectBtn.click(async function() {
-        const resp = await sol.connect();
-        if(resp.status === 0) {
-          alert('connected!');
-        }else {
-          alert('some error occurred, could not connect!');
-        }
-      });
-=======
     $addBtn.click(function () {
       const quantity = parseInt($qty.text()) + 1;
       if (quantity > 3) {
         return;
       }
       $qty.text(quantity.toString());
-      $amtBtn.text(`${1.5 * quantity} SOL`);
+      var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
+      $amtBtn.text(`${amount} SOL`);
     });
->>>>>>> 43c19e0a93a882fee5155888bf4ea1729e73a93d
 
     $subBtn.click(function () {
       const quantity = parseInt($qty.text()) - 1;
@@ -357,7 +327,9 @@
         return;
       }
       $qty.text(quantity.toString());
-      $amtBtn.text(`${1.5 * quantity} SOL`);
+      var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
+      $amtBtn.text(`${amount} SOL`);      
+      //$amtBtn.text(`${1.5 * quantity} SOL`);
     });
     $connectBtn.click(async function () {
       const resp = await sol.connect();
