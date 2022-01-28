@@ -292,7 +292,8 @@
           return;
         }
         $qty.text(quantity.toString());
-        $amtBtn.text(`${1.5*quantity} SOL`);
+        var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
+        $amtBtn.text(`${amount} SOL`);
       });
 
       $subBtn.click(function() {
@@ -301,7 +302,9 @@
           return;
         }
         $qty.text(quantity.toString());
-        $amtBtn.text(`${1.5*quantity} SOL`);
+        //$amtBtn.text(`${1.5*quantity} SOL`);
+        var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
+        $amtBtn.text(`${amount} SOL`);        
       });
       $connectBtn.click(async function() {
         const resp = await sol.connect();
