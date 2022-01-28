@@ -67,10 +67,11 @@
           <ul>
             <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#utilityModal"
                 role="button">Utility</a></li>
-            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#bioModal" role="button">Bio</a>
+            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#bioModal" role="button">Project
+                Details</a>
             </li>
-            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#faqModal"
-                role="button">Faq's</a></li>
+            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#faqModal" role="button">How To
+                Buy</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
@@ -90,9 +91,11 @@
           <div class="content-box2">
             <div class=" alignr">
               <h1 class="new-marg3">BRADYN <span class="green-txt">SWINSON</span></h1>
-              <a href="#" class="greenbtn" id="connect-btn"><span class="b1">CONNECT<span class="y1">WALLET</span> </span><span
-                  class="c1"><img src="assets/img/wallet-icon.png" class=" img-fluid picon3" alt="wallet" /></span></a>
-              <!--<a href="#" ><img src="assets/img/wallet-btn.png"  class="picon2"/></a>-->
+              <a href="#" class="greenbtn" id="connect-btn"><span class="b1">CONNECT<span class="y1">WALLET</span>
+                </span><span class="c1"><img src="assets/img/wallet-icon.png" class=" img-fluid picon3"
+                    alt="wallet" /></span></a>
+              <!--<a href="#" class="dgreenbtn"><span class="b2">WALLET IS<span class="y2">CONNECTED</span> </span><span
+                class="c2"><img src="assets/img/wallet-icon1.png" class=" img-fluid picon3" alt="wallet" /></span></a>-->
             </div>
           </div>
           <div class="content-box3">
@@ -103,12 +106,13 @@
               <div id="yellow-btn1">
                 <div class="yellow-btn-box">
                   <span style="padding-left: 17px;" class="g-txt" id="items-rem">100/101</span><br>
-                  <div style="padding-left: 17px;" class="b-txt"> Available</div><i
-                    class="bi bi-dash-circle-fill" id="sub"></i>&nbsp;<span id="qty">1</span>&nbsp;<i class="bi bi-plus-circle-fill" id="add"></i>&nbsp;<span id="sol-amt">1.5 SOL</span>
+                  <div style="padding-left: 17px;" class="b-txt"> Available</div><i class="bi bi-dash-circle-fill"
+                    id="sub"></i>&nbsp;<span id="qty">1</span>&nbsp;<i class="bi bi-plus-circle-fill"
+                    id="add"></i>&nbsp;<span id="sol-amt">1.5 SOL</span>
                 </div>
                 &nbsp;&nbsp;
-                <div class="yellow-btn-box"><a href="#" class="greenbtn1" id="mint-btn"> <img src="assets/img/picon1.png"
-                      class="img-fluid picon1" alt="money" /><br>MINT</a>
+                <div class="yellow-btn-box"><a href="#" class="greenbtn1" id="mint-btn"> <img
+                      src="assets/img/picon1.png" class="img-fluid picon1" alt="money" /><br>MINT</a>
                 </div>
               </div>
             </div>
@@ -180,14 +184,18 @@
           </div>
 
           <div class="content-box1">
-            <h2>BIO</h2>
-            <p>““One of the big breakout players this season has been Bradyn Swinson. In the shortened 2020 season, he
-              recorded three tackles through seven games. In the three games he has played this season, he has four
-              times that mark, totaling 22 tackles and two sacks.”</p>
-            <a target="_blank"
+            <h2>Project Details</h2>
+            <p><span>Collection Name:</span> 44 Underdog</p>
+            <p><span>Mint Price:</span> 1.5 SOL</p>
+            <p><span>Supply:</span> 101</p>
+            <p><span>Launch:</span> 1/28 12pmCST</p>
+            <p>44 Underdog is a collection of 101 unique art NFTs of Bradyn Swinson built on the Solana blockchain.
+              Bradyn’s project is about bringing his fans closer together in an exclusive community where his fans will
+              be rewarded for their long-term loyalty throughout his football career.</p>
+            <!-- <a target="_blank"
               href="https://www.si.com/college/oregon/football/swinson-opens-up-on-injury-vs-ohio-state">Read more on
               Bradyn here </a>
-
+-->
           </div>
 
           <div class="content-box">
@@ -218,9 +226,26 @@
 
           <div class="content-box">
             <br><br>
-            <h2>FAQ's</h2>
+            <h2>How To Buy</h2>
             <br><br>
-            <div class="content-box1">
+            <div class="content-box1 faq-q">
+              <ol>
+                <li>Buy Solana (SOL) on Coinbase or another exchange here. You will need at least 1.5 SOL to mint a 44
+                  Underdog NFT (plus a little more with exchange fees). </li>
+                <li>Create a Phantom wallet on their website at <a target="_blank"
+                    href="https://phantom.app">phantom.app</a> then send your SOL from the exchange you
+                  used to your Solana wallet address.</li>
+                <li>
+                  Go to Bradyn’s page on our website and click “Connect Wallet” then select the number you want to
+                  “Mint”.
+                </li>
+                <li>
+                  Click “Mint” to own your exclusive 44 Underdog NFT.
+                </li>
+                <li>
+                  Once complete your 44 Underdog NFT will be secured in your Solana wallet.
+                </li>
+              </ol>
               <!--  <div class="img-ball"><img src="assets/img/ball.png" /> </div>-->
               <div class="faq-header">Frequently Asked Questions</div>
               <div class="faq-c">
@@ -286,6 +311,7 @@
       $amtBtn = $("#sol-amt"),
       $qty = $("#qty");
 
+<<<<<<< HEAD
       $addBtn.click(function() {
         const quantity = parseInt($qty.text()) + 1;
         if(quantity > 3) {
@@ -314,28 +340,55 @@
           alert('some error occurred, could not connect!');
         }
       });
-
-      function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
+=======
+    $addBtn.click(function () {
+      const quantity = parseInt($qty.text()) + 1;
+      if (quantity > 3) {
+        return;
       }
+      $qty.text(quantity.toString());
+      $amtBtn.text(`${1.5 * quantity} SOL`);
+    });
+>>>>>>> 43c19e0a93a882fee5155888bf4ea1729e73a93d
 
-      async function setItems() {
-        while(true) {
-          const itemsRemaining = await sol.getItemsRemaining();
-          //console.log('items remaining: ',itemsRemaining);
-          $itemsRem.text(`${itemsRemaining}/101`);
-          await sleep(6000);
-        }
+    $subBtn.click(function () {
+      const quantity = parseInt($qty.text()) - 1;
+      if (quantity < 1) {
+        return;
       }
+      $qty.text(quantity.toString());
+      $amtBtn.text(`${1.5 * quantity} SOL`);
+    });
+    $connectBtn.click(async function () {
+      const resp = await sol.connect();
+      if (resp.status === 0) {
+        alert('connected!');
+      } else {
+        alert('some error occurred, could not connect!');
+      }
+    });
 
-      $mintBtn.click(function() {
-        const quantity = parseInt($qty.text());
-        sol.mintBradynNft(quantity,function(res) {
-          alert(res.message);
-        }) 
-      });
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-      setItems();
+    async function setItems() {
+      while (true) {
+        const itemsRemaining = await sol.getItemsRemaining();
+        //console.log('items remaining: ',itemsRemaining);
+        $itemsRem.text(`${itemsRemaining}/101`);
+        await sleep(6000);
+      }
+    }
+
+    $mintBtn.click(function () {
+      const quantity = parseInt($qty.text());
+      sol.mintBradynNft(quantity, function (res) {
+        alert(res.message);
+      })
+    });
+
+    setItems();
 
     // Hide browser menu.
     (function () {

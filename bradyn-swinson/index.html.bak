@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>BurrstSports</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicons/favicon-32x32.png" rel="icon">
+  <link href="assets/img/favicons/android-chrome-192x192.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/responsive.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+
+  <section id="hero" class="hero-pad">
+    <section class="ag-smoke-block">
+      <div class="ag-smoke-1"><img src="assets/img/smoke-1.png"></div>
+      <div class="ag-smoke-1 ag-smoke__delay-1"><img src="assets/img/smoke-1.png"></div>
+      <div class="ag-smoke-1 ag-smoke__delay-2"><img src="assets/img/smoke-1.png"></div>
+      <div class="ag-smoke-2"><img src="assets/img/smoke-2.png"></div>
+      <div class="ag-smoke-2 ag-smoke__delay-1"><img src="assets/img/smoke-2.png"></div>
+      <div class="ag-smoke-2 ag-smoke__delay-2"><img src="assets/img/smoke-2.png"></div>
+      <div class="ag-smoke-3"><img src="assets/img/smoke-3.png"></div>
+      <div class="ag-smoke-3 ag-smoke__delay-1"><img src="assets/img/smoke-3.png"></div>
+      <div class="ag-smoke-3 ag-smoke__delay-2"><img src="assets/img/smoke-3.png"></div>
+      <div class="ag-smoke-4"><img src="assets/img/smoke-4.png"></div>
+      <div class="ag-smoke-4 ag-smoke__delay-1"><img src="assets/img/smoke-4.png"></div>
+      <div class="ag-smoke-4 ag-smoke__delay-2"><img src="assets/img/smoke-4.png"></div>
+      <div class="ag-format-container">
+
+      </div>
+    </section>
+    <br /><br /><br />
+    <header id="header">
+      <div class="d-flex align-items-center justify-content-lg-between top-pad1">
+        <h1 class="logo me-auto me-lg-0"><a href="https://burrst.io"><img src="assets/img/logo.png" /><span></span></a>
+        </h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+          <ul>
+            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#utilityModal"
+                role="button">Utility</a></li>
+            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#bioModal" role="button">Bio</a>
+            </li>
+            <li><a class="nav-link scrollto" type="button" data-bs-toggle="modal" href="#faqModal"
+                role="button">How To Buy</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+
+        <!--<a href="#about" class="get-started-btn scrollto">Get Started</a>-->
+
+      </div>
+    </header>
+
+    <div data-aos="fade-up" class="box-top1">
+      <div class="row" data-aos="fade-up" data-aos-delay="150">
+
+        <div class="col-xl-5 col-lg-4 hero-leftpic"> <img src="assets/img/man1.png" class="img-fluid" alt="man" />
+        </div>
+        <div class="col-xl-7 col-lg-8 col-sm-12 right-pad1  hero-rightpic">
+          <div class="content-box2">
+            <div class=" alignr">
+              <h1 class="new-marg3">BRADYN <span class="green-txt">SWINSON</span></h1>
+              <a href="#" class="greenbtn" id="connect-btn"><span class="b1">CONNECT<span class="y1">WALLET</span> </span><span
+                  class="c1"><img src="assets/img/wallet-icon.png" class=" img-fluid picon3" alt="wallet" /></span></a>
+              <!--<a href="#" ><img src="assets/img/wallet-btn.png"  class="picon2"/></a>-->
+            </div>
+          </div>
+          <div class="content-box3">
+            <div class="content-box1a">
+              <img src="assets/img/circle-pic1.png" class="img-fluid f2" alt="players" />
+            </div>
+            <div class="content-box1b">
+              <div id="yellow-btn1">
+                <div class="yellow-btn-box">
+                  <span style="padding-left: 17px;" class="g-txt" id="items-rem">100/101</span><br>
+                  <div style="padding-left: 17px;" class="b-txt"> Available</div><i
+                    class="bi bi-dash-circle-fill" id="sub"></i>&nbsp;<span id="qty">1</span>&nbsp;<i class="bi bi-plus-circle-fill" id="add"></i>&nbsp;<span id="sol-amt">1.5 SOL</span>
+                </div>
+                &nbsp;&nbsp;
+                <div class="yellow-btn-box"><a href="#" class="greenbtn1" id="mint-btn"> <img src="assets/img/picon1.png"
+                      class="img-fluid picon1" alt="money" /><br>MINT</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <div class="signup_modal modal fade" id="utilityModal" aria-hidden="true" aria-labelledby="utilityModal"
+    tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div id="utility">
+
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <div class="close-container" type="button" data-bs-dismiss="modal" aria-label="Close">
+                  <div class="leftright"></div>
+                  <div class="rightleft"></div>
+                  <label class="close">close</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-box">
+            <div class="row">
+
+              <div class="col-md-12 pad-left30">
+                <h2>Utility</h2>
+                <p><span>5% of the mint sale</span><br>
+                  will be donated to Bradyn’s school of choice.<br>
+                  <span>Holder #4 </span><br>
+                  will receive Bradyn’s game-worn cleats.<br>
+                  <span>Holder #56</span><br>
+                  will receive Bradyn’s game-worn gloves.<br>
+                  <!-- <span>10 lucky holders </span><br>
+                  will receive Bradyn signed sports cards.<br> -->
+                  <span>All holders </span><br>
+                  will gain access to Bradyn’s exclusive chat.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="signup_modal modal fade" id="bioModal" aria-hidden="true" aria-labelledby="bioModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div id="bio">
+
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <div class="close-container" type="button" data-bs-dismiss="modal" aria-label="Close">
+                  <div class="leftright"></div>
+                  <div class="rightleft"></div>
+                  <label class="close">close</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-box1">
+            <h2>BIO</h2>
+            <p>““One of the big breakout players this season has been Bradyn Swinson. In the shortened 2020 season, he
+              recorded three tackles through seven games. In the three games he has played this season, he has four
+              times that mark, totaling 22 tackles and two sacks.”</p>
+            <a target="_blank"
+              href="https://www.si.com/college/oregon/football/swinson-opens-up-on-injury-vs-ohio-state">Read more on
+              Bradyn here </a>
+
+          </div>
+
+          <div class="content-box">
+            &nbsp;
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="signup_modal modal fade" id="faqModal" aria-hidden="true" aria-labelledby="faqModal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div id="faq">
+
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <div class="close-container" type="button" data-bs-dismiss="modal" aria-label="Close">
+                  <div class="leftright"></div>
+                  <div class="rightleft"></div>
+                  <label class="close">close</label>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-box">
+            <br><br>
+            <h2>FAQ's</h2>
+            <br><br>
+            <div class="content-box1">
+              <!--  <div class="img-ball"><img src="assets/img/ball.png" /> </div>-->
+              <div class="faq-header">Frequently Asked Questions</div>
+              <div class="faq-c">
+                <div class="faq-q"><span class="faq-t">+</span>What is Bradyn’s project about? </div>
+                <div class="faq-a">
+                  <p>Bradyn’s project is about bringing his fans closer together in an exclusive community where his
+                    fans will be rewarded for their long-term loyalty throughout his football career. </p>
+                </div>
+              </div>
+              <div class="faq-c">
+                <div class="faq-q"><span class="faq-t">+</span>What is the supply amount?</div>
+                <div class="faq-a">
+                  <p>100.</p>
+                </div>
+              </div>
+              <div class="faq-c">
+                <div class="faq-q"><span class="faq-t">+</span>How much will it cost to mint Bradyn’s NFT? </div>
+                <div class="faq-a">
+                  <p>1.5 SOL</p>
+                </div>
+              </div>
+
+              <div class="faq-c">
+                <div class="faq-q"><span class="faq-t">+</span>Where will I be able to mint? </div>
+                <div class="faq-a">
+                  <p>Here on Bradyn’s page.</p>
+                </div>
+              </div>
+            </div>
+            <br><br>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/libraries.min.js"></script>
+  <script src="assets/js/jquery.parallax.js"></script>
+  <script src="./assets/js/bundle.js"></script>
+  <script>
+    // jQuery Selections
+    var $html = $('html'),
+      $container = $('#container'),
+      $prompt = $('#prompt'),
+      $toggle = $('#toggle'),
+      $about = $('#about'),
+      $scene = $('#scene'),
+      $connectBtn = $("#connect-btn"),
+      $itemsRem = $("#items-rem"),
+      $mintBtn = $("#mint-btn"),
+      $addBtn = $("#add"),
+      $subBtn = $("#sub"),
+      $amtBtn = $("#sol-amt"),
+      $qty = $("#qty");
+
+      $addBtn.click(function() {
+        const quantity = parseInt($qty.text()) + 1;
+        if(quantity > 3) {
+          return;
+        }
+        $qty.text(quantity.toString());
+        $amtBtn.text(`${1.5*quantity} SOL`);
+      });
+
+      $subBtn.click(function() {
+        const quantity = parseInt($qty.text()) - 1;
+        if(quantity < 1) {
+          return;
+        }
+        $qty.text(quantity.toString());
+        $amtBtn.text(`${1.5*quantity} SOL`);
+      });
+      $connectBtn.click(async function() {
+        const resp = await sol.connect();
+        if(resp.status === 0) {
+          alert('connected!');
+        }else {
+          alert('some error occurred, could not connect!');
+        }
+      });
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function setItems() {
+        while(true) {
+          const itemsRemaining = await sol.getItemsRemaining();
+          //console.log('items remaining: ',itemsRemaining);
+          $itemsRem.text(`${itemsRemaining}/101`);
+          await sleep(6000);
+        }
+      }
+
+      $mintBtn.click(function() {
+        const quantity = parseInt($qty.text());
+        sol.mintBradynNft(quantity,function(res) {
+          alert(res.message);
+        }) 
+      });
+
+      setItems();
+
+    // Hide browser menu.
+    (function () {
+      setTimeout(function () { window.scrollTo(0, 0); }, 0);
+    })();
+
+    // Setup FastClick.
+    FastClick.attach(document.body);
+
+    // Add touch functionality.
+    if (Hammer.HAS_TOUCHEVENTS) {
+      $container.hammer({ drag_lock_to_axis: true });
+      _.tap($html, 'a,button,[data-tap]');
+    }
+
+    // Add touch or mouse class to html element.
+    $html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
+
+    // Resize handler.
+    (resize = function () {
+      $scene[0].style.width = window.innerWidth + 'px';
+      $scene[0].style.height = window.innerHeight + 'px';
+      if (!$prompt.hasClass('hide')) {
+        if (window.innerWidth < 800) {
+          $toggle.addClass('hide');
+        } else {
+          $toggle.removeClass('hide');
+        }
+      }
+    })();
+
+    // Attach window listeners.
+    window.onresize = _.debounce(resize, 200);
+    window.onscroll = _.debounce(resize, 200);
+
+    function showDetails() {
+      $about.removeClass('hide');
+      $toggle.removeClass('i');
+    }
+
+    function hideDetails() {
+      $about.addClass('hide');
+      $toggle.addClass('i');
+    }
+
+    // Listen for toggle click event.
+    $toggle.on('click', function (event) {
+      $toggle.hasClass('i') ? showDetails() : hideDetails();
+    });
+
+    // Pretty simple huh?
+    $scene.parallax();
+
+    // Check for orientation support.
+    setTimeout(function () {
+      if ($scene.data('mode') === 'cursor') {
+        $prompt.removeClass('hide');
+        if (window.innerWidth < 800) $toggle.addClass('hide');
+        $prompt.on('click', function (event) {
+          $prompt.addClass('hide');
+          if (window.innerWidth < 800) {
+            setTimeout(function () {
+              $toggle.removeClass('hide');
+            }, 1200);
+          }
+        });
+      }
+    }, 1000);
+
+
+    // Facebook stuff.
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <script>
+    $(".faq-q").click(function () {
+      var container = $(this).parents(".faq-c");
+      var answer = container.find(".faq-a");
+      var trigger = container.find(".faq-t");
+
+      answer.slideToggle(200);
+
+      if (trigger.hasClass("faq-o")) {
+        trigger.removeClass("faq-o");
+      }
+      else {
+        trigger.addClass("faq-o");
+      }
+    });
+  </script>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
