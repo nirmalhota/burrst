@@ -247,7 +247,7 @@
                 </li>
               </ol>
               <!--  <div class="img-ball"><img src="assets/img/ball.png" /> </div>-->
-              <div class="faq-header">Frequently Asked Questions</div>
+              <!-- <div class="faq-header">Frequently Asked Questions</div>
               <div class="faq-c">
                 <div class="faq-q"><span class="faq-t">+</span>What is Bradyn’s project about? </div>
                 <div class="faq-a">
@@ -273,7 +273,7 @@
                 <div class="faq-a">
                   <p>Here on Bradyn’s page.</p>
                 </div>
-              </div>
+              </div> -->
             </div>
             <br><br>
           </div>
@@ -317,7 +317,7 @@
         return;
       }
       $qty.text(quantity.toString());
-      var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
+      var amount = (Math.round((1.5 * quantity) * 10) / 10).toFixed(1)
       $amtBtn.text(`${amount} SOL`);
     });
 
@@ -327,8 +327,8 @@
         return;
       }
       $qty.text(quantity.toString());
-      var amount = (Math.round((1.5*quantity) * 10) / 10).toFixed(1)
-      $amtBtn.text(`${amount} SOL`);      
+      var amount = (Math.round((1.5 * quantity) * 10) / 10).toFixed(1)
+      $amtBtn.text(`${amount} SOL`);
       //$amtBtn.text(`${1.5 * quantity} SOL`);
     });
     $connectBtn.click(async function () {

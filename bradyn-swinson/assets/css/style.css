@@ -490,7 +490,7 @@ nav.navbar-expand-lg {
 }
 .faq-q {
 	cursor: pointer;
-	font-size: 1em;
+	font-size: 1.2em;
 	font-weight: 100;
 	font-family: 'Raleway', sans-serif;
 	color: #ccc;
@@ -505,7 +505,7 @@ nav.navbar-expand-lg {
 	font-family: 'Raleway', sans-serif;
 }
 .faq-q ol{ margin-left: 0px; padding-left: 15px;}
-.faq-q ol li{ line-height: 32px}
+.faq-q ol li{ line-height: 42px}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -623,7 +623,7 @@ nav.navbar-expand-lg {
 	color: #ffc451;
 }
 #header .logo img {
-	max-height: 50px !important;
+	/* max-height: 50px !important; */
 }
 /*--------------------------------------------------------------
 #  Get Startet Button
