@@ -130,6 +130,20 @@ a.greenbtn {
 	font-size: 3vw;
 	margin-top: 15px;
 }
+a.dgreenbtn {
+	background: #074721;
+	color: #fff;
+	font-weight: normal;
+	border: 0px none;
+	border-radius: 14px;
+	padding: 5px 10px 5px 10px;
+	text-align: right;
+	float: right;
+	font-family: 'Anton', sans-serif;
+	letter-spacing: 2px;
+	font-size: 3vw;
+	margin-top: 21px;
+}
 
 a.greenbtn1 {
     background: #069d44;
@@ -380,8 +394,9 @@ nav.navbar-expand-lg {
 	color: #fff;
 	font-size: 22px;
 	line-height: 34px;
-	padding-top: 30px
+	padding-top: 15px
 }
+#bio span {color: #069d44; text-transform: uppercase}
 #bio a {
 	color: #fff;
 	background: #069d44;
@@ -440,7 +455,7 @@ nav.navbar-expand-lg {
 	top: 90px
 }
 .faq-header {
-	font-size: 2em;
+	font-size: 1.2em;
 	border-bottom: 1px dotted #ccc;
 	padding: 1em 0;
 	font-family: 'Raleway', sans-serif;
@@ -475,18 +490,22 @@ nav.navbar-expand-lg {
 }
 .faq-q {
 	cursor: pointer;
-	font-size: 1.5em;
+	font-size: 1em;
 	font-weight: 100;
 	font-family: 'Raleway', sans-serif;
 	color: #ccc;
+	font-weight: 500;
 }
 .faq-a {
 	clear: both;
 	color: #999;
+	font-size: 0.9em;
 	display: none;
 	padding-left: 1.5em;
 	font-family: 'Raleway', sans-serif;
 }
+.faq-q ol{ margin-left: 0px; padding-left: 15px;}
+.faq-q ol li{ line-height: 32px}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -574,7 +593,7 @@ nav.navbar-expand-lg {
 --------------------------------------------------------------*/
 #header {
 	transition: all 0.5s;
-	z-index: 5000000;
+	z-index: 6000000;
 	padding: 0px 0;
 	background: transparent;
 	position: absolute;
@@ -595,12 +614,16 @@ nav.navbar-expand-lg {
 }
 #header .logo a {
 	color: #fff;
+	
+    margin-top: 15px;
+    display: block;
+
 }
 #header .logo a span {
 	color: #ffc451;
 }
 #header .logo img {
-	max-height: 50px;
+	max-height: 50px !important;
 }
 /*--------------------------------------------------------------
 #  Get Startet Button
@@ -748,7 +771,7 @@ nav.navbar-expand-lg {
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.9);
 	transition: 0.3s;
-	z-index: 999;
+	z-index: 9999999 !important;
 }
 .navbar-mobile .mobile-nav-toggle {
 	position: absolute;
@@ -763,9 +786,11 @@ nav.navbar-expand-lg {
 	bottom: 15px;
 	left: 15px;
 	padding: 10px 0;
-	background-color: #fff;
+	background-color: #444;
 	overflow-y: auto;
 	transition: 0.3s;
+	height: 45vh;
+	z-index: 800000;
 }
 .navbar-mobile a, .navbar-mobile a:focus {
 	padding: 10px 20px;
@@ -819,7 +844,8 @@ nav.navbar-expand-lg {
 	min-width: 100%;
 }
 .hero-pad {
-	padding-top: 30px
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 /*#hero:before {
   content: "";
@@ -2123,7 +2149,10 @@ section {
 
 span.b1{float:left; display: block; font-size: 2.5vw !important; line-height: 46px } 
 span.c1{float:left; display: block;  line-height: 76px; vertical-align: middle;}
-span.y1{color:#f9cb33; font-family: "Open Sans", sans-serif; display: block; line-height: 26px; font-size: 2.2vw !important}
+span.y1{color:#f9cb33; font-family: "Open Sans", sans-serif; display: block; line-height: 26px !important; font-size: 2.2vw !important}
+span.b2{float:left; display: block; font-size: 2.3vw !important; line-height: 36px } 
+span.c2{float:left; display: block;  line-height: 56px; vertical-align: middle; padding-left: 10px;}
+span.y2{color:#f9cb33; font-family: "Open Sans", sans-serif; display: block; line-height: 26px !important; font-size: 1.5vw !important; letter-spacing: 1px;}
 .alignr {
 	text-align: right;   
 }

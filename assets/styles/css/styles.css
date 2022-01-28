@@ -2,6 +2,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 /* font-family: 'Anton', sans-serif; */
 /* font-family: 'Open Sans', sans-serif; */
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+@media screen and (max-width: 769px) {
+	
+	.navbar .menubox1{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+		text-align: left;
+    width: 170px;
+}
+	.navbar-toggler {
+    padding: .25rem .75rem;
+    margin-left: 80px !important;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: box-shadow .15s ease-in-out;
+}
+	.nav-item:after {
+   display: none;
+}
+	.navbar>.container-fluid{align-items: top !important; justify-content: space-between;}
+	
+}
+
 
 
 html {
@@ -167,6 +203,7 @@ ul {
 
   .player {
     width: 70%;
+    top: 23%;
     top: 23%;
     right: 9%;
   }
