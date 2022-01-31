@@ -56594,6 +56594,7 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "connect": () => (/* binding */ connect),
+/* harmony export */   "isConnected": () => (/* binding */ isConnected),
 /* harmony export */   "getItemsRemaining": () => (/* binding */ getItemsRemaining),
 /* harmony export */   "mintBradynNft": () => (/* binding */ mintBradynNft)
 /* harmony export */ });
@@ -56615,6 +56616,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var network = 'https://api.mainnet-beta.solana.com'; //const network = 'https://api.devnet.solana.com';
+
+if (network !== 'https://api.mainnet-beta.solana.com') {
+  alert("WARNING! the network is not currently set to mainnet");
+}
 
 var connection = new _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.Connection(network);
 window.isConnected = false;
@@ -56727,6 +56732,10 @@ function getState(candyMachineId) {
                 ).catch(err => console.error(err));
 */
 
+
+function isConnected() {
+  return window.solana.isConnected();
+}
 
 function mintToken(_x, _x2, _x3) {
   return _mintToken.apply(this, arguments);
