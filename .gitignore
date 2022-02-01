@@ -1,4 +1,4 @@
-# .gitignore
+.gitignore
 node_modules
-# index.js
-# package.json
+index.js
+package.json
