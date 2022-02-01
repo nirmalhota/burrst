@@ -56630,9 +56630,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
- //const network = 'https://api.mainnet-beta.solana.com';
 
-var network = 'https://api.devnet.solana.com';
+var network = 'https://api.mainnet-beta.solana.com'; //const network = 'https://api.devnet.solana.com';
 
 if (network !== 'https://api.mainnet-beta.solana.com') {
   alert("WARNING! the network is not currently set to mainnet");
@@ -56897,9 +56896,9 @@ function _mintToken() {
 }
 
 var CANDY_MACHINE_1 = '5rdSYCxms1F9rv2c32m2s9UdBj6eLhH4HQVAiuBDaL24'; // mints the one token for bradyn
-//const CANDY_MACHINE_2 = 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'; // mints 100 tokens for users
 
-var CANDY_MACHINE_2 = 'GPk1m3uyKWYHjSK3mMVTMF3R52ntg7b5FsVDYsaqW5M6'; // mints 100 tokens for users
+var CANDY_MACHINE_2 = 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'; // mints 100 tokens for users
+//const CANDY_MACHINE_2 = 'GPk1m3uyKWYHjSK3mMVTMF3R52ntg7b5FsVDYsaqW5M6'; // mints 100 tokens for users
 
 /*
 export const mintMultipleToken = async (
