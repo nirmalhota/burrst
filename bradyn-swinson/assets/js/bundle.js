@@ -47669,6 +47669,1216 @@ var pako = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SequenceType": () => (/* binding */ SequenceType),
+/* harmony export */   "CANDY_MACHINE_PROGRAM": () => (/* binding */ CANDY_MACHINE_PROGRAM),
+/* harmony export */   "sleep": () => (/* binding */ sleep),
+/* harmony export */   "getUnixTs": () => (/* binding */ getUnixTs),
+/* harmony export */   "CIVIC": () => (/* binding */ CIVIC),
+/* harmony export */   "SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID": () => (/* binding */ SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID),
+/* harmony export */   "sendSignedTransaction": () => (/* binding */ sendSignedTransaction),
+/* harmony export */   "sendTransactions": () => (/* binding */ sendTransactions),
+/* harmony export */   "getCandyMachineCreator": () => (/* binding */ getCandyMachineCreator),
+/* harmony export */   "getNetworkToken": () => (/* binding */ getNetworkToken),
+/* harmony export */   "getNetworkExpire": () => (/* binding */ getNetworkExpire),
+/* harmony export */   "getAtaForMint": () => (/* binding */ getAtaForMint),
+/* harmony export */   "getCandyMachineState": () => (/* binding */ getCandyMachineState),
+/* harmony export */   "mint": () => (/* binding */ mint),
+/* harmony export */   "mintTokens": () => (/* binding */ mintTokens)
+/* harmony export */ });
+/* harmony import */ var _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var buffer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(131);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+
+var SequenceType;
+
+(function (SequenceType) {
+  SequenceType[SequenceType["Sequential"] = 0] = "Sequential";
+  SequenceType[SequenceType["Parallel"] = 1] = "Parallel";
+  SequenceType[SequenceType["StopOnFailure"] = 2] = "StopOnFailure";
+})(SequenceType || (SequenceType = {}));
+
+var CANDY_MACHINE_PROGRAM = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
+function sleep(ms) {
+  return new Promise(function (resolve) {
+    return setTimeout(resolve, ms);
+  });
+}
+var getUnixTs = function getUnixTs() {
+  return new Date().getTime() / 1000;
+};
+var DEFAULT_TIMEOUT = 15000;
+
+function awaitTransactionSignatureConfirmation(_x, _x2, _x3) {
+  return _awaitTransactionSignatureConfirmation.apply(this, arguments);
+}
+
+function _awaitTransactionSignatureConfirmation() {
+  _awaitTransactionSignatureConfirmation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(txid, timeout, connection) {
+    var commitment,
+        queryStatus,
+        done,
+        status,
+        subId,
+        _args13 = arguments;
+    return regeneratorRuntime.wrap(function _callee12$(_context13) {
+      while (1) {
+        switch (_context13.prev = _context13.next) {
+          case 0:
+            commitment = _args13.length > 3 && _args13[3] !== undefined ? _args13[3] : 'recent';
+            queryStatus = _args13.length > 4 && _args13[4] !== undefined ? _args13[4] : false;
+            done = false;
+            status = {
+              slot: 0,
+              confirmations: 0,
+              err: null
+            };
+            subId = 0;
+            _context13.next = 7;
+            return new Promise( /*#__PURE__*/function () {
+              var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(resolve, reject) {
+                return regeneratorRuntime.wrap(function _callee11$(_context12) {
+                  while (1) {
+                    switch (_context12.prev = _context12.next) {
+                      case 0:
+                        setTimeout(function () {
+                          if (done) {
+                            return;
+                          }
+
+                          done = true;
+                          console.log('Rejecting for timeout...');
+                          reject({
+                            timeout: true
+                          });
+                        }, timeout);
+
+                        try {
+                          subId = connection.onSignature(txid, function (result, context) {
+                            done = true;
+                            status = {
+                              err: result.err,
+                              slot: context.slot,
+                              confirmations: 0
+                            };
+
+                            if (result.err) {
+                              console.log('Rejected via websocket', result.err);
+                              reject(status);
+                            } else {
+                              console.log('Resolved via websocket', result);
+                              resolve(status);
+                            }
+                          }, commitment);
+                        } catch (e) {
+                          done = true;
+                          console.error('WS error in setup', txid, e);
+                        }
+
+                      case 2:
+                        if (!(!done && queryStatus)) {
+                          _context12.next = 8;
+                          break;
+                        }
+
+                        // eslint-disable-next-line no-loop-func
+                        _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+                          var signatureStatuses;
+                          return regeneratorRuntime.wrap(function _callee10$(_context11) {
+                            while (1) {
+                              switch (_context11.prev = _context11.next) {
+                                case 0:
+                                  _context11.prev = 0;
+                                  _context11.next = 3;
+                                  return connection.getSignatureStatuses([txid]);
+
+                                case 3:
+                                  signatureStatuses = _context11.sent;
+                                  status = signatureStatuses && signatureStatuses.value[0];
+
+                                  if (!done) {
+                                    if (!status) {
+                                      console.log('REST null result for', txid, status);
+                                    } else if (status.err) {
+                                      console.log('REST error for', txid, status);
+                                      done = true;
+                                      reject(status.err);
+                                    } else if (!status.confirmations) {
+                                      console.log('REST no confirmations for', txid, status);
+                                    } else {
+                                      console.log('REST confirmation for', txid, status);
+                                      done = true;
+                                      resolve(status);
+                                    }
+                                  }
+
+                                  _context11.next = 11;
+                                  break;
+
+                                case 8:
+                                  _context11.prev = 8;
+                                  _context11.t0 = _context11["catch"](0);
+
+                                  if (!done) {
+                                    console.log('REST connection error: txid', txid, _context11.t0);
+                                  }
+
+                                case 11:
+                                case "end":
+                                  return _context11.stop();
+                              }
+                            }
+                          }, _callee10, null, [[0, 8]]);
+                        }))();
+
+                        _context12.next = 6;
+                        return sleep(2000);
+
+                      case 6:
+                        _context12.next = 2;
+                        break;
+
+                      case 8:
+                      case "end":
+                        return _context12.stop();
+                    }
+                  }
+                }, _callee11);
+              }));
+
+              return function (_x27, _x28) {
+                return _ref12.apply(this, arguments);
+              };
+            }());
+
+          case 7:
+            status = _context13.sent;
+            //@ts-ignore
+            if (connection._signatureSubscriptions[subId]) connection.removeSignatureListener(subId);
+            done = true;
+            console.log('Returning status', status);
+            return _context13.abrupt("return", status);
+
+          case 12:
+          case "end":
+            return _context13.stop();
+        }
+      }
+    }, _callee12);
+  }));
+  return _awaitTransactionSignatureConfirmation.apply(this, arguments);
+}
+
+function simulateTransaction(_x4, _x5, _x6) {
+  return _simulateTransaction.apply(this, arguments);
+}
+
+function _simulateTransaction() {
+  _simulateTransaction = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(connection, transaction, commitment) {
+    var signData, wireTransaction, encodedTransaction, config, args, res;
+    return regeneratorRuntime.wrap(function _callee13$(_context14) {
+      while (1) {
+        switch (_context14.prev = _context14.next) {
+          case 0:
+            _context14.next = 2;
+            return connection._recentBlockhash( // @ts-ignore
+            connection._disableBlockhashCaching);
+
+          case 2:
+            transaction.recentBlockhash = _context14.sent;
+            signData = transaction.serializeMessage(); // @ts-ignore
+
+            wireTransaction = transaction._serialize(signData);
+            encodedTransaction = wireTransaction.toString('base64');
+            config = {
+              encoding: 'base64',
+              commitment: commitment
+            };
+            args = [encodedTransaction, config]; // @ts-ignore
+
+            _context14.next = 10;
+            return connection._rpcRequest('simulateTransaction', args);
+
+          case 10:
+            res = _context14.sent;
+
+            if (!res.error) {
+              _context14.next = 13;
+              break;
+            }
+
+            throw new Error('failed to simulate transaction: ' + res.error.message);
+
+          case 13:
+            return _context14.abrupt("return", res.result);
+
+          case 14:
+          case "end":
+            return _context14.stop();
+        }
+      }
+    }, _callee13);
+  }));
+  return _simulateTransaction.apply(this, arguments);
+}
+
+var CIVIC = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('gatem74V238djXdzWnJf94Wo1DcnuGkfijbf3AuBhfs');
+var SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+function sendSignedTransaction(_x7) {
+  return _sendSignedTransaction.apply(this, arguments);
+}
+
+function _sendSignedTransaction() {
+  _sendSignedTransaction = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(_ref) {
+    var signedTransaction, connection, _ref$timeout, timeout, rawTransaction, startTime, slot, txid, done, confirmation, simulateResult, i, line;
+
+    return regeneratorRuntime.wrap(function _callee15$(_context16) {
+      while (1) {
+        switch (_context16.prev = _context16.next) {
+          case 0:
+            signedTransaction = _ref.signedTransaction, connection = _ref.connection, _ref$timeout = _ref.timeout, timeout = _ref$timeout === void 0 ? DEFAULT_TIMEOUT : _ref$timeout;
+            rawTransaction = signedTransaction.serialize();
+            startTime = getUnixTs();
+            slot = 0;
+            _context16.next = 6;
+            return connection.sendRawTransaction(rawTransaction, {
+              skipPreflight: true
+            });
+
+          case 6:
+            txid = _context16.sent;
+            console.log('Started awaiting confirmation for', txid);
+            done = false;
+
+            _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+              return regeneratorRuntime.wrap(function _callee14$(_context15) {
+                while (1) {
+                  switch (_context15.prev = _context15.next) {
+                    case 0:
+                      if (!(!done && getUnixTs() - startTime < timeout)) {
+                        _context15.next = 6;
+                        break;
+                      }
+
+                      connection.sendRawTransaction(rawTransaction, {
+                        skipPreflight: true
+                      });
+                      _context15.next = 4;
+                      return sleep(500);
+
+                    case 4:
+                      _context15.next = 0;
+                      break;
+
+                    case 6:
+                    case "end":
+                      return _context15.stop();
+                  }
+                }
+              }, _callee14);
+            }))();
+
+            _context16.prev = 10;
+            _context16.next = 13;
+            return awaitTransactionSignatureConfirmation(txid, timeout, connection, 'recent', true);
+
+          case 13:
+            confirmation = _context16.sent;
+
+            if (confirmation) {
+              _context16.next = 16;
+              break;
+            }
+
+            throw new Error('Timed out awaiting confirmation on transaction');
+
+          case 16:
+            if (!confirmation.err) {
+              _context16.next = 19;
+              break;
+            }
+
+            console.error(confirmation.err);
+            throw new Error('Transaction failed: Custom instruction error');
+
+          case 19:
+            slot = (confirmation === null || confirmation === void 0 ? void 0 : confirmation.slot) || 0;
+            _context16.next = 47;
+            break;
+
+          case 22:
+            _context16.prev = 22;
+            _context16.t0 = _context16["catch"](10);
+            console.error('Timeout Error caught', _context16.t0);
+
+            if (!_context16.t0.timeout) {
+              _context16.next = 27;
+              break;
+            }
+
+            throw new Error('Timed out awaiting confirmation on transaction');
+
+          case 27:
+            simulateResult = null;
+            _context16.prev = 28;
+            _context16.next = 31;
+            return simulateTransaction(connection, signedTransaction, 'single');
+
+          case 31:
+            simulateResult = _context16.sent.value;
+            _context16.next = 36;
+            break;
+
+          case 34:
+            _context16.prev = 34;
+            _context16.t1 = _context16["catch"](28);
+
+          case 36:
+            if (!(simulateResult && simulateResult.err)) {
+              _context16.next = 47;
+              break;
+            }
+
+            if (!simulateResult.logs) {
+              _context16.next = 46;
+              break;
+            }
+
+            i = simulateResult.logs.length - 1;
+
+          case 39:
+            if (!(i >= 0)) {
+              _context16.next = 46;
+              break;
+            }
+
+            line = simulateResult.logs[i];
+
+            if (!line.startsWith('Program log: ')) {
+              _context16.next = 43;
+              break;
+            }
+
+            throw new Error('Transaction failed: ' + line.slice('Program log: '.length));
+
+          case 43:
+            --i;
+            _context16.next = 39;
+            break;
+
+          case 46:
+            throw new Error(JSON.stringify(simulateResult.err));
+
+          case 47:
+            _context16.prev = 47;
+            done = true;
+            return _context16.finish(47);
+
+          case 50:
+            console.log('Latency', txid, getUnixTs() - startTime);
+            return _context16.abrupt("return", {
+              txid: txid,
+              slot: slot
+            });
+
+          case 52:
+          case "end":
+            return _context16.stop();
+        }
+      }
+    }, _callee15, null, [[10, 22, 47, 50], [28, 34]]);
+  }));
+  return _sendSignedTransaction.apply(this, arguments);
+}
+
+var sendTransactions = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(connection, wallet, instructionSet, signersSet) {
+    var sequenceType,
+        commitment,
+        successCallback,
+        failCallback,
+        block,
+        unsignedTxns,
+        _loop,
+        i,
+        _ret,
+        signedTxns,
+        pendingTxns,
+        breakEarlyObject,
+        _loop2,
+        _i,
+        _ret2,
+        _args2 = arguments;
+
+    return regeneratorRuntime.wrap(function _callee$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            sequenceType = _args2.length > 4 && _args2[4] !== undefined ? _args2[4] : SequenceType.Parallel;
+            commitment = _args2.length > 5 && _args2[5] !== undefined ? _args2[5] : 'singleGossip';
+            successCallback = _args2.length > 6 && _args2[6] !== undefined ? _args2[6] : function (txid, ind) {};
+            failCallback = _args2.length > 7 && _args2[7] !== undefined ? _args2[7] : function (txid, ind) {
+              return false;
+            };
+            block = _args2.length > 8 ? _args2[8] : undefined;
+
+            if (wallet.publicKey) {
+              _context2.next = 7;
+              break;
+            }
+
+            throw {
+              name: "wallet error",
+              message: "could not get the public key of the wallet"
+            };
+
+          case 7:
+            ;
+            unsignedTxns = [];
+
+            if (block) {
+              _context2.next = 13;
+              break;
+            }
+
+            _context2.next = 12;
+            return connection.getRecentBlockhash(commitment);
+
+          case 12:
+            block = _context2.sent;
+
+          case 13:
+            _loop = function _loop(i) {
+              var instructions = instructionSet[i];
+              var signers = signersSet[i];
+
+              if (instructions.length === 0) {
+                return "continue";
+              }
+
+              var transaction = new _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.Transaction();
+              instructions.forEach(function (instruction) {
+                return transaction.add(instruction);
+              });
+              transaction.recentBlockhash = block.blockhash;
+              transaction.setSigners.apply(transaction, [// fee payed by the wallet owner
+              wallet.publicKey].concat(_toConsumableArray(signers.map(function (s) {
+                return s.publicKey;
+              }))));
+
+              if (signers.length > 0) {
+                transaction.partialSign.apply(transaction, _toConsumableArray(signers));
+              }
+
+              unsignedTxns.push(transaction);
+            };
+
+            i = 0;
+
+          case 15:
+            if (!(i < instructionSet.length)) {
+              _context2.next = 22;
+              break;
+            }
+
+            _ret = _loop(i);
+
+            if (!(_ret === "continue")) {
+              _context2.next = 19;
+              break;
+            }
+
+            return _context2.abrupt("continue", 19);
+
+          case 19:
+            i++;
+            _context2.next = 15;
+            break;
+
+          case 22:
+            _context2.next = 24;
+            return wallet.signAllTransactions(unsignedTxns);
+
+          case 24:
+            signedTxns = _context2.sent;
+            pendingTxns = [];
+            breakEarlyObject = {
+              breakEarly: false,
+              i: 0
+            };
+            console.log('Signed txns length', signedTxns.length, 'vs handed in length', instructionSet.length);
+            _loop2 = /*#__PURE__*/regeneratorRuntime.mark(function _loop2(_i) {
+              var signedTxnPromise;
+              return regeneratorRuntime.wrap(function _loop2$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      signedTxnPromise = sendSignedTransaction({
+                        connection: connection,
+                        signedTransaction: signedTxns[_i]
+                      });
+                      signedTxnPromise.then(function (_ref3) {
+                        var txid = _ref3.txid,
+                            slot = _ref3.slot;
+                        successCallback(txid, _i);
+                      })["catch"](function (reason) {
+                        // @ts-ignore
+                        failCallback(signedTxns[_i], _i);
+
+                        if (sequenceType === SequenceType.StopOnFailure) {
+                          breakEarlyObject.breakEarly = true;
+                          breakEarlyObject.i = _i;
+                        }
+                      });
+
+                      if (!(sequenceType !== SequenceType.Parallel)) {
+                        _context.next = 21;
+                        break;
+                      }
+
+                      _context.prev = 3;
+                      _context.next = 6;
+                      return signedTxnPromise;
+
+                    case 6:
+                      _context.next = 19;
+                      break;
+
+                    case 8:
+                      _context.prev = 8;
+                      _context.t0 = _context["catch"](3);
+                      console.log('Caught failure', _context.t0);
+
+                      if (!breakEarlyObject.breakEarly) {
+                        _context.next = 19;
+                        break;
+                      }
+
+                      console.log('Died on ', breakEarlyObject.i); // Return the txn we failed on by index
+
+                      _context.t1 = breakEarlyObject.i;
+                      _context.next = 16;
+                      return Promise.all(pendingTxns);
+
+                    case 16:
+                      _context.t2 = _context.sent;
+                      _context.t3 = {
+                        number: _context.t1,
+                        txs: _context.t2
+                      };
+                      return _context.abrupt("return", {
+                        v: _context.t3
+                      });
+
+                    case 19:
+                      _context.next = 22;
+                      break;
+
+                    case 21:
+                      pendingTxns.push(signedTxnPromise);
+
+                    case 22:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _loop2, null, [[3, 8]]);
+            });
+            _i = 0;
+
+          case 30:
+            if (!(_i < signedTxns.length)) {
+              _context2.next = 38;
+              break;
+            }
+
+            return _context2.delegateYield(_loop2(_i), "t0", 32);
+
+          case 32:
+            _ret2 = _context2.t0;
+
+            if (!(_typeof(_ret2) === "object")) {
+              _context2.next = 35;
+              break;
+            }
+
+            return _context2.abrupt("return", _ret2.v);
+
+          case 35:
+            _i++;
+            _context2.next = 30;
+            break;
+
+          case 38:
+            if (!(sequenceType !== SequenceType.Parallel)) {
+              _context2.next = 41;
+              break;
+            }
+
+            _context2.next = 41;
+            return Promise.all(pendingTxns);
+
+          case 41:
+            _context2.t1 = signedTxns.length;
+            _context2.next = 44;
+            return Promise.all(pendingTxns);
+
+          case 44:
+            _context2.t2 = _context2.sent;
+            return _context2.abrupt("return", {
+              number: _context2.t1,
+              txs: _context2.t2
+            });
+
+          case 46:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function sendTransactions(_x8, _x9, _x10, _x11) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+var getCandyMachineCreator = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(candyMachine) {
+    return regeneratorRuntime.wrap(function _callee2$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('candy_machine'), candyMachine.toBuffer()], CANDY_MACHINE_PROGRAM);
+
+          case 2:
+            return _context3.abrupt("return", _context3.sent);
+
+          case 3:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function getCandyMachineCreator(_x12) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+var getNetworkToken = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(wallet, gatekeeperNetwork) {
+    return regeneratorRuntime.wrap(function _callee3$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([wallet.toBuffer(), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('gateway'), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from([0, 0, 0, 0, 0, 0, 0, 0]), gatekeeperNetwork.toBuffer()], CIVIC);
+
+          case 2:
+            return _context4.abrupt("return", _context4.sent);
+
+          case 3:
+          case "end":
+            return _context4.stop();
+        }
+      }
+    }, _callee3);
+  }));
+
+  return function getNetworkToken(_x13, _x14) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+var getNetworkExpire = /*#__PURE__*/function () {
+  var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(gatekeeperNetwork) {
+    return regeneratorRuntime.wrap(function _callee4$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([gatekeeperNetwork.toBuffer(), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('expire')], CIVIC);
+
+          case 2:
+            return _context5.abrupt("return", _context5.sent);
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee4);
+  }));
+
+  return function getNetworkExpire(_x15) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+var getAtaForMint = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(mint, buyer) {
+    return regeneratorRuntime.wrap(function _callee5$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buyer.toBuffer(), _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID.toBuffer(), mint.toBuffer()], SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID);
+
+          case 2:
+            return _context6.abrupt("return", _context6.sent);
+
+          case 3:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee5);
+  }));
+
+  return function getAtaForMint(_x16, _x17) {
+    return _ref7.apply(this, arguments);
+  };
+}();
+var TOKEN_METADATA_PROGRAM_ID = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
+
+var createAssociatedTokenAccountInstruction = function createAssociatedTokenAccountInstruction(associatedTokenAddress, payer, walletAddress, splTokenMintAddress) {
+  var keys = [{
+    pubkey: payer,
+    isSigner: true,
+    isWritable: true
+  }, {
+    pubkey: associatedTokenAddress,
+    isSigner: false,
+    isWritable: true
+  }, {
+    pubkey: walletAddress,
+    isSigner: false,
+    isWritable: false
+  }, {
+    pubkey: splTokenMintAddress,
+    isSigner: false,
+    isWritable: false
+  }, {
+    pubkey: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SystemProgram.programId,
+    isSigner: false,
+    isWritable: false
+  }, {
+    pubkey: _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID,
+    isSigner: false,
+    isWritable: false
+  }, {
+    pubkey: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_RENT_PUBKEY,
+    isSigner: false,
+    isWritable: false
+  }];
+  return new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.TransactionInstruction({
+    keys: keys,
+    programId: SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
+    data: buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from([])
+  });
+};
+
+var getCandyMachineState = /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(anchorWallet, candyMachineId, connection) {
+    var provider, idl, program, state, itemsAvailable, itemsRedeemed, itemsRemaining, presale;
+    return regeneratorRuntime.wrap(function _callee6$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            provider = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Provider(connection, anchorWallet, {
+              preflightCommitment: 'recent'
+            }); //console.log('anchor ',provider);
+
+            _context7.next = 3;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider);
+
+          case 3:
+            idl = _context7.sent;
+            program = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Program(idl, CANDY_MACHINE_PROGRAM, provider);
+            _context7.next = 7;
+            return program.account.candyMachine.fetch(candyMachineId);
+
+          case 7:
+            state = _context7.sent;
+            itemsAvailable = state.data.itemsAvailable.toNumber();
+            itemsRedeemed = state.itemsRedeemed.toNumber();
+            itemsRemaining = itemsAvailable - itemsRedeemed;
+            presale = state.data.whitelistMintSettings && state.data.whitelistMintSettings.presale && (!state.data.goLiveDate || state.data.goLiveDate.toNumber() > new Date().getTime() / 1000);
+            return _context7.abrupt("return", {
+              id: candyMachineId,
+              program: program,
+              state: {
+                itemsAvailable: itemsAvailable,
+                itemsRedeemed: itemsRedeemed,
+                itemsRemaining: itemsRemaining,
+                isSoldOut: itemsRemaining === 0,
+                isActive: (presale || state.data.goLiveDate.toNumber() < new Date().getTime() / 1000) && (state.endSettings ? state.endSettings.endSettingType.date ? state.endSettings.number.toNumber() > new Date().getTime() / 1000 : itemsRedeemed < state.endSettings.number.toNumber() : true),
+                isPresale: presale,
+                goLiveDate: state.data.goLiveDate,
+                treasury: state.wallet,
+                tokenMint: state.tokenMint,
+                gatekeeper: state.data.gatekeeper,
+                endSettings: state.data.endSettings,
+                whitelistMintSettings: state.data.whitelistMintSettings,
+                hiddenSettings: state.data.hiddenSettings,
+                price: state.data.price
+              }
+            });
+
+          case 13:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee6);
+  }));
+
+  return function getCandyMachineState(_x18, _x19, _x20) {
+    return _ref8.apply(this, arguments);
+  };
+}();
+
+var getMasterEdition = /*#__PURE__*/function () {
+  var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(mint) {
+    return regeneratorRuntime.wrap(function _callee7$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            _context8.next = 2;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer(), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('edition')], TOKEN_METADATA_PROGRAM_ID);
+
+          case 2:
+            return _context8.abrupt("return", _context8.sent[0]);
+
+          case 3:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee7);
+  }));
+
+  return function getMasterEdition(_x21) {
+    return _ref9.apply(this, arguments);
+  };
+}();
+
+var getMetadata = /*#__PURE__*/function () {
+  var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(mint) {
+    return regeneratorRuntime.wrap(function _callee8$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            _context9.next = 2;
+            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer()], TOKEN_METADATA_PROGRAM_ID);
+
+          case 2:
+            return _context9.abrupt("return", _context9.sent[0]);
+
+          case 3:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee8);
+  }));
+
+  return function getMetadata(_x22) {
+    return _ref10.apply(this, arguments);
+  };
+}();
+
+var mint = /*#__PURE__*/function () {
+  var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(candyMachine, payer) {
+    var mint, userTokenAccountAddress, userPayingAccountAddress, candyMachineAddress, remainingAccounts, signers, cleanupInstructions, instructions, _mint, whitelistToken, whitelistBurnAuthority, exists, transferAuthority, metadataAddress, masterEdition, _yield$getCandyMachin, _yield$getCandyMachin2, candyMachineCreator, creatorBump;
+
+    return regeneratorRuntime.wrap(function _callee9$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            mint = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate();
+            _context10.next = 3;
+            return getAtaForMint(mint.publicKey, payer);
+
+          case 3:
+            userTokenAccountAddress = _context10.sent[0];
+
+            if (!candyMachine.state.tokenMint) {
+              _context10.next = 10;
+              break;
+            }
+
+            _context10.next = 7;
+            return getAtaForMint(candyMachine.state.tokenMint, payer);
+
+          case 7:
+            _context10.t0 = _context10.sent[0];
+            _context10.next = 11;
+            break;
+
+          case 10:
+            _context10.t0 = payer;
+
+          case 11:
+            userPayingAccountAddress = _context10.t0;
+            //console.log('paying address: ',userPayingAccountAddress);
+            candyMachineAddress = candyMachine.id;
+            remainingAccounts = [];
+            signers = [mint];
+            cleanupInstructions = [];
+            _context10.t1 = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SystemProgram;
+            _context10.t2 = payer;
+            _context10.t3 = mint.publicKey;
+            _context10.t4 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.MintLayout.span;
+            _context10.next = 22;
+            return candyMachine.program.provider.connection.getMinimumBalanceForRentExemption(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.MintLayout.span);
+
+          case 22:
+            _context10.t5 = _context10.sent;
+            _context10.t6 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID;
+            _context10.t7 = {
+              fromPubkey: _context10.t2,
+              newAccountPubkey: _context10.t3,
+              space: _context10.t4,
+              lamports: _context10.t5,
+              programId: _context10.t6
+            };
+            _context10.t8 = _context10.t1.createAccount.call(_context10.t1, _context10.t7);
+            _context10.t9 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createInitMintInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, mint.publicKey, 0, payer, payer);
+            _context10.t10 = createAssociatedTokenAccountInstruction(userTokenAccountAddress, payer, payer, mint.publicKey);
+            _context10.t11 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createMintToInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, payer, [], 1);
+            instructions = [_context10.t8, _context10.t9, _context10.t10, _context10.t11];
+
+            if (!candyMachine.state.gatekeeper) {
+              _context10.next = 45;
+              break;
+            }
+
+            _context10.t12 = remainingAccounts;
+            _context10.next = 34;
+            return getNetworkToken(payer, candyMachine.state.gatekeeper.gatekeeperNetwork);
+
+          case 34:
+            _context10.t13 = _context10.sent[0];
+            _context10.t14 = {
+              pubkey: _context10.t13,
+              isWritable: true,
+              isSigner: false
+            };
+
+            _context10.t12.push.call(_context10.t12, _context10.t14);
+
+            if (!candyMachine.state.gatekeeper.expireOnUse) {
+              _context10.next = 45;
+              break;
+            }
+
+            remainingAccounts.push({
+              pubkey: CIVIC,
+              isWritable: false,
+              isSigner: false
+            });
+            _context10.t15 = remainingAccounts;
+            _context10.next = 42;
+            return getNetworkExpire(candyMachine.state.gatekeeper.gatekeeperNetwork);
+
+          case 42:
+            _context10.t16 = _context10.sent[0];
+            _context10.t17 = {
+              pubkey: _context10.t16,
+              isWritable: false,
+              isSigner: false
+            };
+
+            _context10.t15.push.call(_context10.t15, _context10.t17);
+
+          case 45:
+            if (!candyMachine.state.whitelistMintSettings) {
+              _context10.next = 60;
+              break;
+            }
+
+            _mint = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey(candyMachine.state.whitelistMintSettings.mint);
+            _context10.next = 49;
+            return getAtaForMint(_mint, payer);
+
+          case 49:
+            whitelistToken = _context10.sent[0];
+            remainingAccounts.push({
+              pubkey: whitelistToken,
+              isWritable: true,
+              isSigner: false
+            });
+
+            if (!candyMachine.state.whitelistMintSettings.mode.burnEveryTime) {
+              _context10.next = 60;
+              break;
+            }
+
+            whitelistBurnAuthority = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate();
+            remainingAccounts.push({
+              pubkey: _mint,
+              isWritable: true,
+              isSigner: false
+            });
+            remainingAccounts.push({
+              pubkey: whitelistBurnAuthority.publicKey,
+              isWritable: false,
+              isSigner: true
+            });
+            signers.push(whitelistBurnAuthority);
+            _context10.next = 58;
+            return candyMachine.program.provider.connection.getAccountInfo(whitelistToken);
+
+          case 58:
+            exists = _context10.sent;
+
+            if (exists) {
+              instructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createApproveInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, whitelistToken, whitelistBurnAuthority.publicKey, payer, [], 1));
+              cleanupInstructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createRevokeInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, whitelistToken, payer, []));
+            }
+
+          case 60:
+            if (candyMachine.state.tokenMint) {
+              transferAuthority = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate();
+              signers.push(transferAuthority);
+              remainingAccounts.push({
+                pubkey: userPayingAccountAddress,
+                isWritable: true,
+                isSigner: false
+              });
+              remainingAccounts.push({
+                pubkey: transferAuthority.publicKey,
+                isWritable: false,
+                isSigner: true
+              });
+              instructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createApproveInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, userPayingAccountAddress, transferAuthority.publicKey, payer, [], candyMachine.state.price.toNumber()));
+              cleanupInstructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createRevokeInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, userPayingAccountAddress, payer, []));
+            }
+
+            _context10.next = 63;
+            return getMetadata(mint.publicKey);
+
+          case 63:
+            metadataAddress = _context10.sent;
+            _context10.next = 66;
+            return getMasterEdition(mint.publicKey);
+
+          case 66:
+            masterEdition = _context10.sent;
+            _context10.next = 69;
+            return getCandyMachineCreator(candyMachineAddress);
+
+          case 69:
+            _yield$getCandyMachin = _context10.sent;
+            _yield$getCandyMachin2 = _slicedToArray(_yield$getCandyMachin, 2);
+            candyMachineCreator = _yield$getCandyMachin2[0];
+            creatorBump = _yield$getCandyMachin2[1];
+            _context10.t18 = instructions;
+            _context10.next = 76;
+            return candyMachine.program.instruction.mintNft(creatorBump, {
+              accounts: {
+                candyMachine: candyMachineAddress,
+                candyMachineCreator: candyMachineCreator,
+                payer: payer,
+                wallet: candyMachine.state.treasury,
+                mint: mint.publicKey,
+                metadata: metadataAddress,
+                masterEdition: masterEdition,
+                mintAuthority: payer,
+                updateAuthority: payer,
+                tokenMetadataProgram: TOKEN_METADATA_PROGRAM_ID,
+                tokenProgram: _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID,
+                systemProgram: _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.SystemProgram.programId,
+                rent: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_RENT_PUBKEY,
+                clock: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_CLOCK_PUBKEY,
+                recentBlockhashes: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
+                instructionSysvarAccount: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_INSTRUCTIONS_PUBKEY
+              },
+              remainingAccounts: remainingAccounts.length > 0 ? remainingAccounts : undefined
+            });
+
+          case 76:
+            _context10.t19 = _context10.sent;
+
+            _context10.t18.push.call(_context10.t18, _context10.t19);
+
+            _context10.next = 80;
+            return sendTransactions(candyMachine.program.provider.connection, candyMachine.program.provider.wallet, [instructions, cleanupInstructions], [signers, []]);
+
+          case 80:
+            return _context10.abrupt("return", _context10.sent);
+
+          case 81:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee9);
+  }));
+
+  return function mint(_x23, _x24) {
+    return _ref11.apply(this, arguments);
+  };
+}();
+
+function executeInstructions() {}
+
+function mintTokens(_x25, _x26) {
+  return _mintTokens.apply(this, arguments);
+}
+
+function _mintTokens() {
+  _mintTokens = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(candyMachine, payer) {
+    return regeneratorRuntime.wrap(function _callee16$(_context17) {
+      while (1) {
+        switch (_context17.prev = _context17.next) {
+          case 0:
+          case "end":
+            return _context17.stop();
+        }
+      }
+    }, _callee16);
+  }));
+  return _mintTokens.apply(this, arguments);
+}
+
+/***/ }),
+/* 131 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ASSOCIATED_TOKEN_PROGRAM_ID": () => (/* binding */ ASSOCIATED_TOKEN_PROGRAM_ID),
 /* harmony export */   "AccountLayout": () => (/* binding */ AccountLayout),
 /* harmony export */   "MintLayout": () => (/* binding */ MintLayout),
@@ -47677,7 +48887,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Token": () => (/* binding */ Token),
 /* harmony export */   "u64": () => (/* binding */ u64)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(131);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(132);
 /* harmony import */ var bn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var bn_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bn_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
@@ -55276,7 +56486,7 @@ class Token {
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -55297,1212 +56507,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-/***/ }),
-/* 132 */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SequenceType": () => (/* binding */ SequenceType),
-/* harmony export */   "CANDY_MACHINE_PROGRAM": () => (/* binding */ CANDY_MACHINE_PROGRAM),
-/* harmony export */   "sleep": () => (/* binding */ sleep),
-/* harmony export */   "getUnixTs": () => (/* binding */ getUnixTs),
-/* harmony export */   "CIVIC": () => (/* binding */ CIVIC),
-/* harmony export */   "SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID": () => (/* binding */ SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID),
-/* harmony export */   "sendSignedTransaction": () => (/* binding */ sendSignedTransaction),
-/* harmony export */   "sendTransactions": () => (/* binding */ sendTransactions),
-/* harmony export */   "getCandyMachineCreator": () => (/* binding */ getCandyMachineCreator),
-/* harmony export */   "getNetworkToken": () => (/* binding */ getNetworkToken),
-/* harmony export */   "getNetworkExpire": () => (/* binding */ getNetworkExpire),
-/* harmony export */   "getAtaForMint": () => (/* binding */ getAtaForMint),
-/* harmony export */   "getCandyMachineState": () => (/* binding */ getCandyMachineState),
-/* harmony export */   "mint": () => (/* binding */ mint),
-/* harmony export */   "mintTokens": () => (/* binding */ mintTokens)
-/* harmony export */ });
-/* harmony import */ var _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var buffer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(130);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-
-
-
-var SequenceType;
-
-(function (SequenceType) {
-  SequenceType[SequenceType["Sequential"] = 0] = "Sequential";
-  SequenceType[SequenceType["Parallel"] = 1] = "Parallel";
-  SequenceType[SequenceType["StopOnFailure"] = 2] = "StopOnFailure";
-})(SequenceType || (SequenceType = {}));
-
-var CANDY_MACHINE_PROGRAM = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
-function sleep(ms) {
-  return new Promise(function (resolve) {
-    return setTimeout(resolve, ms);
-  });
-}
-var getUnixTs = function getUnixTs() {
-  return new Date().getTime() / 1000;
-};
-var DEFAULT_TIMEOUT = 15000;
-
-function awaitTransactionSignatureConfirmation(_x, _x2, _x3) {
-  return _awaitTransactionSignatureConfirmation.apply(this, arguments);
-}
-
-function _awaitTransactionSignatureConfirmation() {
-  _awaitTransactionSignatureConfirmation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(txid, timeout, connection) {
-    var commitment,
-        queryStatus,
-        done,
-        status,
-        subId,
-        _args13 = arguments;
-    return regeneratorRuntime.wrap(function _callee12$(_context13) {
-      while (1) {
-        switch (_context13.prev = _context13.next) {
-          case 0:
-            commitment = _args13.length > 3 && _args13[3] !== undefined ? _args13[3] : 'recent';
-            queryStatus = _args13.length > 4 && _args13[4] !== undefined ? _args13[4] : false;
-            done = false;
-            status = {
-              slot: 0,
-              confirmations: 0,
-              err: null
-            };
-            subId = 0;
-            _context13.next = 7;
-            return new Promise( /*#__PURE__*/function () {
-              var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(resolve, reject) {
-                return regeneratorRuntime.wrap(function _callee11$(_context12) {
-                  while (1) {
-                    switch (_context12.prev = _context12.next) {
-                      case 0:
-                        setTimeout(function () {
-                          if (done) {
-                            return;
-                          }
-
-                          done = true;
-                          console.log('Rejecting for timeout...');
-                          reject({
-                            timeout: true
-                          });
-                        }, timeout);
-
-                        try {
-                          subId = connection.onSignature(txid, function (result, context) {
-                            done = true;
-                            status = {
-                              err: result.err,
-                              slot: context.slot,
-                              confirmations: 0
-                            };
-
-                            if (result.err) {
-                              console.log('Rejected via websocket', result.err);
-                              reject(status);
-                            } else {
-                              console.log('Resolved via websocket', result);
-                              resolve(status);
-                            }
-                          }, commitment);
-                        } catch (e) {
-                          done = true;
-                          console.error('WS error in setup', txid, e);
-                        }
-
-                      case 2:
-                        if (!(!done && queryStatus)) {
-                          _context12.next = 8;
-                          break;
-                        }
-
-                        // eslint-disable-next-line no-loop-func
-                        _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
-                          var signatureStatuses;
-                          return regeneratorRuntime.wrap(function _callee10$(_context11) {
-                            while (1) {
-                              switch (_context11.prev = _context11.next) {
-                                case 0:
-                                  _context11.prev = 0;
-                                  _context11.next = 3;
-                                  return connection.getSignatureStatuses([txid]);
-
-                                case 3:
-                                  signatureStatuses = _context11.sent;
-                                  status = signatureStatuses && signatureStatuses.value[0];
-
-                                  if (!done) {
-                                    if (!status) {
-                                      console.log('REST null result for', txid, status);
-                                    } else if (status.err) {
-                                      console.log('REST error for', txid, status);
-                                      done = true;
-                                      reject(status.err);
-                                    } else if (!status.confirmations) {
-                                      console.log('REST no confirmations for', txid, status);
-                                    } else {
-                                      console.log('REST confirmation for', txid, status);
-                                      done = true;
-                                      resolve(status);
-                                    }
-                                  }
-
-                                  _context11.next = 11;
-                                  break;
-
-                                case 8:
-                                  _context11.prev = 8;
-                                  _context11.t0 = _context11["catch"](0);
-
-                                  if (!done) {
-                                    console.log('REST connection error: txid', txid, _context11.t0);
-                                  }
-
-                                case 11:
-                                case "end":
-                                  return _context11.stop();
-                              }
-                            }
-                          }, _callee10, null, [[0, 8]]);
-                        }))();
-
-                        _context12.next = 6;
-                        return sleep(2000);
-
-                      case 6:
-                        _context12.next = 2;
-                        break;
-
-                      case 8:
-                      case "end":
-                        return _context12.stop();
-                    }
-                  }
-                }, _callee11);
-              }));
-
-              return function (_x27, _x28) {
-                return _ref12.apply(this, arguments);
-              };
-            }());
-
-          case 7:
-            status = _context13.sent;
-            //@ts-ignore
-            if (connection._signatureSubscriptions[subId]) connection.removeSignatureListener(subId);
-            done = true;
-            console.log('Returning status', status);
-            return _context13.abrupt("return", status);
-
-          case 12:
-          case "end":
-            return _context13.stop();
-        }
-      }
-    }, _callee12);
-  }));
-  return _awaitTransactionSignatureConfirmation.apply(this, arguments);
-}
-
-function simulateTransaction(_x4, _x5, _x6) {
-  return _simulateTransaction.apply(this, arguments);
-}
-
-function _simulateTransaction() {
-  _simulateTransaction = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(connection, transaction, commitment) {
-    var signData, wireTransaction, encodedTransaction, config, args, res;
-    return regeneratorRuntime.wrap(function _callee13$(_context14) {
-      while (1) {
-        switch (_context14.prev = _context14.next) {
-          case 0:
-            _context14.next = 2;
-            return connection._recentBlockhash( // @ts-ignore
-            connection._disableBlockhashCaching);
-
-          case 2:
-            transaction.recentBlockhash = _context14.sent;
-            signData = transaction.serializeMessage(); // @ts-ignore
-
-            wireTransaction = transaction._serialize(signData);
-            encodedTransaction = wireTransaction.toString('base64');
-            config = {
-              encoding: 'base64',
-              commitment: commitment
-            };
-            args = [encodedTransaction, config]; // @ts-ignore
-
-            _context14.next = 10;
-            return connection._rpcRequest('simulateTransaction', args);
-
-          case 10:
-            res = _context14.sent;
-
-            if (!res.error) {
-              _context14.next = 13;
-              break;
-            }
-
-            throw new Error('failed to simulate transaction: ' + res.error.message);
-
-          case 13:
-            return _context14.abrupt("return", res.result);
-
-          case 14:
-          case "end":
-            return _context14.stop();
-        }
-      }
-    }, _callee13);
-  }));
-  return _simulateTransaction.apply(this, arguments);
-}
-
-var CIVIC = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('gatem74V238djXdzWnJf94Wo1DcnuGkfijbf3AuBhfs');
-var SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
-function sendSignedTransaction(_x7) {
-  return _sendSignedTransaction.apply(this, arguments);
-}
-
-function _sendSignedTransaction() {
-  _sendSignedTransaction = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(_ref) {
-    var signedTransaction, connection, _ref$timeout, timeout, rawTransaction, startTime, slot, txid, done, confirmation, simulateResult, i, line;
-
-    return regeneratorRuntime.wrap(function _callee15$(_context16) {
-      while (1) {
-        switch (_context16.prev = _context16.next) {
-          case 0:
-            signedTransaction = _ref.signedTransaction, connection = _ref.connection, _ref$timeout = _ref.timeout, timeout = _ref$timeout === void 0 ? DEFAULT_TIMEOUT : _ref$timeout;
-            rawTransaction = signedTransaction.serialize();
-            startTime = getUnixTs();
-            slot = 0;
-            _context16.next = 6;
-            return connection.sendRawTransaction(rawTransaction, {
-              skipPreflight: true
-            });
-
-          case 6:
-            txid = _context16.sent;
-            console.log('Started awaiting confirmation for', txid);
-            done = false;
-
-            _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-              return regeneratorRuntime.wrap(function _callee14$(_context15) {
-                while (1) {
-                  switch (_context15.prev = _context15.next) {
-                    case 0:
-                      if (!(!done && getUnixTs() - startTime < timeout)) {
-                        _context15.next = 6;
-                        break;
-                      }
-
-                      connection.sendRawTransaction(rawTransaction, {
-                        skipPreflight: true
-                      });
-                      _context15.next = 4;
-                      return sleep(500);
-
-                    case 4:
-                      _context15.next = 0;
-                      break;
-
-                    case 6:
-                    case "end":
-                      return _context15.stop();
-                  }
-                }
-              }, _callee14);
-            }))();
-
-            _context16.prev = 10;
-            _context16.next = 13;
-            return awaitTransactionSignatureConfirmation(txid, timeout, connection, 'recent', true);
-
-          case 13:
-            confirmation = _context16.sent;
-
-            if (confirmation) {
-              _context16.next = 16;
-              break;
-            }
-
-            throw new Error('Timed out awaiting confirmation on transaction');
-
-          case 16:
-            if (!confirmation.err) {
-              _context16.next = 19;
-              break;
-            }
-
-            console.error(confirmation.err);
-            throw new Error('Transaction failed: Custom instruction error');
-
-          case 19:
-            slot = (confirmation === null || confirmation === void 0 ? void 0 : confirmation.slot) || 0;
-            _context16.next = 47;
-            break;
-
-          case 22:
-            _context16.prev = 22;
-            _context16.t0 = _context16["catch"](10);
-            console.error('Timeout Error caught', _context16.t0);
-
-            if (!_context16.t0.timeout) {
-              _context16.next = 27;
-              break;
-            }
-
-            throw new Error('Timed out awaiting confirmation on transaction');
-
-          case 27:
-            simulateResult = null;
-            _context16.prev = 28;
-            _context16.next = 31;
-            return simulateTransaction(connection, signedTransaction, 'single');
-
-          case 31:
-            simulateResult = _context16.sent.value;
-            _context16.next = 36;
-            break;
-
-          case 34:
-            _context16.prev = 34;
-            _context16.t1 = _context16["catch"](28);
-
-          case 36:
-            if (!(simulateResult && simulateResult.err)) {
-              _context16.next = 47;
-              break;
-            }
-
-            if (!simulateResult.logs) {
-              _context16.next = 46;
-              break;
-            }
-
-            i = simulateResult.logs.length - 1;
-
-          case 39:
-            if (!(i >= 0)) {
-              _context16.next = 46;
-              break;
-            }
-
-            line = simulateResult.logs[i];
-
-            if (!line.startsWith('Program log: ')) {
-              _context16.next = 43;
-              break;
-            }
-
-            throw new Error('Transaction failed: ' + line.slice('Program log: '.length));
-
-          case 43:
-            --i;
-            _context16.next = 39;
-            break;
-
-          case 46:
-            throw new Error(JSON.stringify(simulateResult.err));
-
-          case 47:
-            _context16.prev = 47;
-            done = true;
-            return _context16.finish(47);
-
-          case 50:
-            console.log('Latency', txid, getUnixTs() - startTime);
-            return _context16.abrupt("return", {
-              txid: txid,
-              slot: slot
-            });
-
-          case 52:
-          case "end":
-            return _context16.stop();
-        }
-      }
-    }, _callee15, null, [[10, 22, 47, 50], [28, 34]]);
-  }));
-  return _sendSignedTransaction.apply(this, arguments);
-}
-
-var sendTransactions = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(connection, wallet, instructionSet, signersSet) {
-    var sequenceType,
-        commitment,
-        successCallback,
-        failCallback,
-        block,
-        unsignedTxns,
-        _loop,
-        i,
-        _ret,
-        signedTxns,
-        pendingTxns,
-        breakEarlyObject,
-        _loop2,
-        _i,
-        _ret2,
-        _args2 = arguments;
-
-    return regeneratorRuntime.wrap(function _callee$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            sequenceType = _args2.length > 4 && _args2[4] !== undefined ? _args2[4] : SequenceType.Parallel;
-            commitment = _args2.length > 5 && _args2[5] !== undefined ? _args2[5] : 'singleGossip';
-            successCallback = _args2.length > 6 && _args2[6] !== undefined ? _args2[6] : function (txid, ind) {};
-            failCallback = _args2.length > 7 && _args2[7] !== undefined ? _args2[7] : function (txid, ind) {
-              return false;
-            };
-            block = _args2.length > 8 ? _args2[8] : undefined;
-
-            if (wallet.publicKey) {
-              _context2.next = 7;
-              break;
-            }
-
-            throw {
-              name: "wallet error",
-              message: "could not get the public key of the wallet"
-            };
-
-          case 7:
-            ;
-            unsignedTxns = [];
-
-            if (block) {
-              _context2.next = 13;
-              break;
-            }
-
-            _context2.next = 12;
-            return connection.getRecentBlockhash(commitment);
-
-          case 12:
-            block = _context2.sent;
-
-          case 13:
-            _loop = function _loop(i) {
-              var instructions = instructionSet[i];
-              var signers = signersSet[i];
-
-              if (instructions.length === 0) {
-                return "continue";
-              }
-
-              var transaction = new _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.Transaction();
-              instructions.forEach(function (instruction) {
-                return transaction.add(instruction);
-              });
-              transaction.recentBlockhash = block.blockhash;
-              transaction.setSigners.apply(transaction, [// fee payed by the wallet owner
-              wallet.publicKey].concat(_toConsumableArray(signers.map(function (s) {
-                return s.publicKey;
-              }))));
-
-              if (signers.length > 0) {
-                transaction.partialSign.apply(transaction, _toConsumableArray(signers));
-              }
-
-              unsignedTxns.push(transaction);
-            };
-
-            i = 0;
-
-          case 15:
-            if (!(i < instructionSet.length)) {
-              _context2.next = 22;
-              break;
-            }
-
-            _ret = _loop(i);
-
-            if (!(_ret === "continue")) {
-              _context2.next = 19;
-              break;
-            }
-
-            return _context2.abrupt("continue", 19);
-
-          case 19:
-            i++;
-            _context2.next = 15;
-            break;
-
-          case 22:
-            _context2.next = 24;
-            return wallet.signAllTransactions(unsignedTxns);
-
-          case 24:
-            signedTxns = _context2.sent;
-            pendingTxns = [];
-            breakEarlyObject = {
-              breakEarly: false,
-              i: 0
-            };
-            console.log('Signed txns length', signedTxns.length, 'vs handed in length', instructionSet.length);
-            _loop2 = /*#__PURE__*/regeneratorRuntime.mark(function _loop2(_i) {
-              var signedTxnPromise;
-              return regeneratorRuntime.wrap(function _loop2$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      signedTxnPromise = sendSignedTransaction({
-                        connection: connection,
-                        signedTransaction: signedTxns[_i]
-                      });
-                      signedTxnPromise.then(function (_ref3) {
-                        var txid = _ref3.txid,
-                            slot = _ref3.slot;
-                        successCallback(txid, _i);
-                      })["catch"](function (reason) {
-                        // @ts-ignore
-                        failCallback(signedTxns[_i], _i);
-
-                        if (sequenceType === SequenceType.StopOnFailure) {
-                          breakEarlyObject.breakEarly = true;
-                          breakEarlyObject.i = _i;
-                        }
-                      });
-
-                      if (!(sequenceType !== SequenceType.Parallel)) {
-                        _context.next = 21;
-                        break;
-                      }
-
-                      _context.prev = 3;
-                      _context.next = 6;
-                      return signedTxnPromise;
-
-                    case 6:
-                      _context.next = 19;
-                      break;
-
-                    case 8:
-                      _context.prev = 8;
-                      _context.t0 = _context["catch"](3);
-                      console.log('Caught failure', _context.t0);
-
-                      if (!breakEarlyObject.breakEarly) {
-                        _context.next = 19;
-                        break;
-                      }
-
-                      console.log('Died on ', breakEarlyObject.i); // Return the txn we failed on by index
-
-                      _context.t1 = breakEarlyObject.i;
-                      _context.next = 16;
-                      return Promise.all(pendingTxns);
-
-                    case 16:
-                      _context.t2 = _context.sent;
-                      _context.t3 = {
-                        number: _context.t1,
-                        txs: _context.t2
-                      };
-                      return _context.abrupt("return", {
-                        v: _context.t3
-                      });
-
-                    case 19:
-                      _context.next = 22;
-                      break;
-
-                    case 21:
-                      pendingTxns.push(signedTxnPromise);
-
-                    case 22:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _loop2, null, [[3, 8]]);
-            });
-            _i = 0;
-
-          case 30:
-            if (!(_i < signedTxns.length)) {
-              _context2.next = 38;
-              break;
-            }
-
-            return _context2.delegateYield(_loop2(_i), "t0", 32);
-
-          case 32:
-            _ret2 = _context2.t0;
-
-            if (!(_typeof(_ret2) === "object")) {
-              _context2.next = 35;
-              break;
-            }
-
-            return _context2.abrupt("return", _ret2.v);
-
-          case 35:
-            _i++;
-            _context2.next = 30;
-            break;
-
-          case 38:
-            if (!(sequenceType !== SequenceType.Parallel)) {
-              _context2.next = 41;
-              break;
-            }
-
-            _context2.next = 41;
-            return Promise.all(pendingTxns);
-
-          case 41:
-            _context2.t1 = signedTxns.length;
-            _context2.next = 44;
-            return Promise.all(pendingTxns);
-
-          case 44:
-            _context2.t2 = _context2.sent;
-            return _context2.abrupt("return", {
-              number: _context2.t1,
-              txs: _context2.t2
-            });
-
-          case 46:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function sendTransactions(_x8, _x9, _x10, _x11) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-var getCandyMachineCreator = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(candyMachine) {
-    return regeneratorRuntime.wrap(function _callee2$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('candy_machine'), candyMachine.toBuffer()], CANDY_MACHINE_PROGRAM);
-
-          case 2:
-            return _context3.abrupt("return", _context3.sent);
-
-          case 3:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee2);
-  }));
-
-  return function getCandyMachineCreator(_x12) {
-    return _ref4.apply(this, arguments);
-  };
-}();
-var getNetworkToken = /*#__PURE__*/function () {
-  var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(wallet, gatekeeperNetwork) {
-    return regeneratorRuntime.wrap(function _callee3$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([wallet.toBuffer(), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('gateway'), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from([0, 0, 0, 0, 0, 0, 0, 0]), gatekeeperNetwork.toBuffer()], CIVIC);
-
-          case 2:
-            return _context4.abrupt("return", _context4.sent);
-
-          case 3:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee3);
-  }));
-
-  return function getNetworkToken(_x13, _x14) {
-    return _ref5.apply(this, arguments);
-  };
-}();
-var getNetworkExpire = /*#__PURE__*/function () {
-  var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(gatekeeperNetwork) {
-    return regeneratorRuntime.wrap(function _callee4$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([gatekeeperNetwork.toBuffer(), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('expire')], CIVIC);
-
-          case 2:
-            return _context5.abrupt("return", _context5.sent);
-
-          case 3:
-          case "end":
-            return _context5.stop();
-        }
-      }
-    }, _callee4);
-  }));
-
-  return function getNetworkExpire(_x15) {
-    return _ref6.apply(this, arguments);
-  };
-}();
-var getAtaForMint = /*#__PURE__*/function () {
-  var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(mint, buyer) {
-    return regeneratorRuntime.wrap(function _callee5$(_context6) {
-      while (1) {
-        switch (_context6.prev = _context6.next) {
-          case 0:
-            _context6.next = 2;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buyer.toBuffer(), _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID.toBuffer(), mint.toBuffer()], SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID);
-
-          case 2:
-            return _context6.abrupt("return", _context6.sent);
-
-          case 3:
-          case "end":
-            return _context6.stop();
-        }
-      }
-    }, _callee5);
-  }));
-
-  return function getAtaForMint(_x16, _x17) {
-    return _ref7.apply(this, arguments);
-  };
-}();
-var TOKEN_METADATA_PROGRAM_ID = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
-
-var createAssociatedTokenAccountInstruction = function createAssociatedTokenAccountInstruction(associatedTokenAddress, payer, walletAddress, splTokenMintAddress) {
-  var keys = [{
-    pubkey: payer,
-    isSigner: true,
-    isWritable: true
-  }, {
-    pubkey: associatedTokenAddress,
-    isSigner: false,
-    isWritable: true
-  }, {
-    pubkey: walletAddress,
-    isSigner: false,
-    isWritable: false
-  }, {
-    pubkey: splTokenMintAddress,
-    isSigner: false,
-    isWritable: false
-  }, {
-    pubkey: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SystemProgram.programId,
-    isSigner: false,
-    isWritable: false
-  }, {
-    pubkey: _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID,
-    isSigner: false,
-    isWritable: false
-  }, {
-    pubkey: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_RENT_PUBKEY,
-    isSigner: false,
-    isWritable: false
-  }];
-  return new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.TransactionInstruction({
-    keys: keys,
-    programId: SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
-    data: buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from([])
-  });
-};
-
-var getCandyMachineState = /*#__PURE__*/function () {
-  var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(anchorWallet, candyMachineId, connection) {
-    var provider, idl, program, state, itemsAvailable, itemsRedeemed, itemsRemaining, presale;
-    return regeneratorRuntime.wrap(function _callee6$(_context7) {
-      while (1) {
-        switch (_context7.prev = _context7.next) {
-          case 0:
-            provider = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Provider(connection, anchorWallet, {
-              preflightCommitment: 'recent'
-            }); //console.log('anchor ',provider);
-
-            _context7.next = 3;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Program.fetchIdl(CANDY_MACHINE_PROGRAM, provider);
-
-          case 3:
-            idl = _context7.sent;
-            program = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.Program(idl, CANDY_MACHINE_PROGRAM, provider);
-            _context7.next = 7;
-            return program.account.candyMachine.fetch(candyMachineId);
-
-          case 7:
-            state = _context7.sent;
-            itemsAvailable = state.data.itemsAvailable.toNumber();
-            itemsRedeemed = state.itemsRedeemed.toNumber();
-            itemsRemaining = itemsAvailable - itemsRedeemed;
-            presale = state.data.whitelistMintSettings && state.data.whitelistMintSettings.presale && (!state.data.goLiveDate || state.data.goLiveDate.toNumber() > new Date().getTime() / 1000);
-            return _context7.abrupt("return", {
-              id: candyMachineId,
-              program: program,
-              state: {
-                itemsAvailable: itemsAvailable,
-                itemsRedeemed: itemsRedeemed,
-                itemsRemaining: itemsRemaining,
-                isSoldOut: itemsRemaining === 0,
-                isActive: (presale || state.data.goLiveDate.toNumber() < new Date().getTime() / 1000) && (state.endSettings ? state.endSettings.endSettingType.date ? state.endSettings.number.toNumber() > new Date().getTime() / 1000 : itemsRedeemed < state.endSettings.number.toNumber() : true),
-                isPresale: presale,
-                goLiveDate: state.data.goLiveDate,
-                treasury: state.wallet,
-                tokenMint: state.tokenMint,
-                gatekeeper: state.data.gatekeeper,
-                endSettings: state.data.endSettings,
-                whitelistMintSettings: state.data.whitelistMintSettings,
-                hiddenSettings: state.data.hiddenSettings,
-                price: state.data.price
-              }
-            });
-
-          case 13:
-          case "end":
-            return _context7.stop();
-        }
-      }
-    }, _callee6);
-  }));
-
-  return function getCandyMachineState(_x18, _x19, _x20) {
-    return _ref8.apply(this, arguments);
-  };
-}();
-
-var getMasterEdition = /*#__PURE__*/function () {
-  var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(mint) {
-    return regeneratorRuntime.wrap(function _callee7$(_context8) {
-      while (1) {
-        switch (_context8.prev = _context8.next) {
-          case 0:
-            _context8.next = 2;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer(), buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('edition')], TOKEN_METADATA_PROGRAM_ID);
-
-          case 2:
-            return _context8.abrupt("return", _context8.sent[0]);
-
-          case 3:
-          case "end":
-            return _context8.stop();
-        }
-      }
-    }, _callee7);
-  }));
-
-  return function getMasterEdition(_x21) {
-    return _ref9.apply(this, arguments);
-  };
-}();
-
-var getMetadata = /*#__PURE__*/function () {
-  var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(mint) {
-    return regeneratorRuntime.wrap(function _callee8$(_context9) {
-      while (1) {
-        switch (_context9.prev = _context9.next) {
-          case 0:
-            _context9.next = 2;
-            return _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey.findProgramAddress([buffer__WEBPACK_IMPORTED_MODULE_2__.Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer()], TOKEN_METADATA_PROGRAM_ID);
-
-          case 2:
-            return _context9.abrupt("return", _context9.sent[0]);
-
-          case 3:
-          case "end":
-            return _context9.stop();
-        }
-      }
-    }, _callee8);
-  }));
-
-  return function getMetadata(_x22) {
-    return _ref10.apply(this, arguments);
-  };
-}();
-
-var mint = /*#__PURE__*/function () {
-  var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(candyMachine, payer) {
-    var mint, userTokenAccountAddress, userPayingAccountAddress, candyMachineAddress, remainingAccounts, signers, cleanupInstructions, instructions, _mint, whitelistToken, whitelistBurnAuthority, exists, transferAuthority, metadataAddress, masterEdition, _yield$getCandyMachin, _yield$getCandyMachin2, candyMachineCreator, creatorBump;
-
-    return regeneratorRuntime.wrap(function _callee9$(_context10) {
-      while (1) {
-        switch (_context10.prev = _context10.next) {
-          case 0:
-            mint = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate();
-            _context10.next = 3;
-            return getAtaForMint(mint.publicKey, payer);
-
-          case 3:
-            userTokenAccountAddress = _context10.sent[0];
-
-            if (!candyMachine.state.tokenMint) {
-              _context10.next = 10;
-              break;
-            }
-
-            _context10.next = 7;
-            return getAtaForMint(candyMachine.state.tokenMint, payer);
-
-          case 7:
-            _context10.t0 = _context10.sent[0];
-            _context10.next = 11;
-            break;
-
-          case 10:
-            _context10.t0 = payer;
-
-          case 11:
-            userPayingAccountAddress = _context10.t0;
-            //console.log('paying address: ',userPayingAccountAddress);
-            candyMachineAddress = candyMachine.id;
-            remainingAccounts = [];
-            signers = [mint];
-            cleanupInstructions = [];
-            _context10.t1 = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SystemProgram;
-            _context10.t2 = payer;
-            _context10.t3 = mint.publicKey;
-            _context10.t4 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.MintLayout.span;
-            _context10.next = 22;
-            return candyMachine.program.provider.connection.getMinimumBalanceForRentExemption(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.MintLayout.span);
-
-          case 22:
-            _context10.t5 = _context10.sent;
-            _context10.t6 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID;
-            _context10.t7 = {
-              fromPubkey: _context10.t2,
-              newAccountPubkey: _context10.t3,
-              space: _context10.t4,
-              lamports: _context10.t5,
-              programId: _context10.t6
-            };
-            _context10.t8 = _context10.t1.createAccount.call(_context10.t1, _context10.t7);
-            _context10.t9 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createInitMintInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, mint.publicKey, 0, payer, payer);
-            _context10.t10 = createAssociatedTokenAccountInstruction(userTokenAccountAddress, payer, payer, mint.publicKey);
-            _context10.t11 = _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createMintToInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, mint.publicKey, userTokenAccountAddress, payer, [], 1);
-            instructions = [_context10.t8, _context10.t9, _context10.t10, _context10.t11];
-
-            if (!candyMachine.state.gatekeeper) {
-              _context10.next = 45;
-              break;
-            }
-
-            _context10.t12 = remainingAccounts;
-            _context10.next = 34;
-            return getNetworkToken(payer, candyMachine.state.gatekeeper.gatekeeperNetwork);
-
-          case 34:
-            _context10.t13 = _context10.sent[0];
-            _context10.t14 = {
-              pubkey: _context10.t13,
-              isWritable: true,
-              isSigner: false
-            };
-
-            _context10.t12.push.call(_context10.t12, _context10.t14);
-
-            if (!candyMachine.state.gatekeeper.expireOnUse) {
-              _context10.next = 45;
-              break;
-            }
-
-            remainingAccounts.push({
-              pubkey: CIVIC,
-              isWritable: false,
-              isSigner: false
-            });
-            _context10.t15 = remainingAccounts;
-            _context10.next = 42;
-            return getNetworkExpire(candyMachine.state.gatekeeper.gatekeeperNetwork);
-
-          case 42:
-            _context10.t16 = _context10.sent[0];
-            _context10.t17 = {
-              pubkey: _context10.t16,
-              isWritable: false,
-              isSigner: false
-            };
-
-            _context10.t15.push.call(_context10.t15, _context10.t17);
-
-          case 45:
-            if (!candyMachine.state.whitelistMintSettings) {
-              _context10.next = 60;
-              break;
-            }
-
-            _mint = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey(candyMachine.state.whitelistMintSettings.mint);
-            _context10.next = 49;
-            return getAtaForMint(_mint, payer);
-
-          case 49:
-            whitelistToken = _context10.sent[0];
-            remainingAccounts.push({
-              pubkey: whitelistToken,
-              isWritable: true,
-              isSigner: false
-            });
-
-            if (!candyMachine.state.whitelistMintSettings.mode.burnEveryTime) {
-              _context10.next = 60;
-              break;
-            }
-
-            whitelistBurnAuthority = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate();
-            remainingAccounts.push({
-              pubkey: _mint,
-              isWritable: true,
-              isSigner: false
-            });
-            remainingAccounts.push({
-              pubkey: whitelistBurnAuthority.publicKey,
-              isWritable: false,
-              isSigner: true
-            });
-            signers.push(whitelistBurnAuthority);
-            _context10.next = 58;
-            return candyMachine.program.provider.connection.getAccountInfo(whitelistToken);
-
-          case 58:
-            exists = _context10.sent;
-
-            if (exists) {
-              instructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createApproveInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, whitelistToken, whitelistBurnAuthority.publicKey, payer, [], 1));
-              cleanupInstructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createRevokeInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, whitelistToken, payer, []));
-            }
-
-          case 60:
-            if (candyMachine.state.tokenMint) {
-              transferAuthority = _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate();
-              signers.push(transferAuthority);
-              remainingAccounts.push({
-                pubkey: userPayingAccountAddress,
-                isWritable: true,
-                isSigner: false
-              });
-              remainingAccounts.push({
-                pubkey: transferAuthority.publicKey,
-                isWritable: false,
-                isSigner: true
-              });
-              instructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createApproveInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, userPayingAccountAddress, transferAuthority.publicKey, payer, [], candyMachine.state.price.toNumber()));
-              cleanupInstructions.push(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.Token.createRevokeInstruction(_solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID, userPayingAccountAddress, payer, []));
-            }
-
-            _context10.next = 63;
-            return getMetadata(mint.publicKey);
-
-          case 63:
-            metadataAddress = _context10.sent;
-            _context10.next = 66;
-            return getMasterEdition(mint.publicKey);
-
-          case 66:
-            masterEdition = _context10.sent;
-            _context10.next = 69;
-            return getCandyMachineCreator(candyMachineAddress);
-
-          case 69:
-            _yield$getCandyMachin = _context10.sent;
-            _yield$getCandyMachin2 = _slicedToArray(_yield$getCandyMachin, 2);
-            candyMachineCreator = _yield$getCandyMachin2[0];
-            creatorBump = _yield$getCandyMachin2[1];
-            _context10.t18 = instructions;
-            _context10.next = 76;
-            return candyMachine.program.instruction.mintNft(creatorBump, {
-              accounts: {
-                candyMachine: candyMachineAddress,
-                candyMachineCreator: candyMachineCreator,
-                payer: payer,
-                wallet: candyMachine.state.treasury,
-                mint: mint.publicKey,
-                metadata: metadataAddress,
-                masterEdition: masterEdition,
-                mintAuthority: payer,
-                updateAuthority: payer,
-                tokenMetadataProgram: TOKEN_METADATA_PROGRAM_ID,
-                tokenProgram: _solana_spl_token__WEBPACK_IMPORTED_MODULE_3__.TOKEN_PROGRAM_ID,
-                systemProgram: _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.SystemProgram.programId,
-                rent: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_RENT_PUBKEY,
-                clock: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_CLOCK_PUBKEY,
-                recentBlockhashes: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_RECENT_BLOCKHASHES_PUBKEY,
-                instructionSysvarAccount: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.SYSVAR_INSTRUCTIONS_PUBKEY
-              },
-              remainingAccounts: remainingAccounts.length > 0 ? remainingAccounts : undefined
-            });
-
-          case 76:
-            _context10.t19 = _context10.sent;
-
-            _context10.t18.push.call(_context10.t18, _context10.t19);
-
-            return _context10.abrupt("return", [[instructions, cleanupInstructions], [signers, []]]);
-
-          case 79:
-          case "end":
-            return _context10.stop();
-        }
-      }
-    }, _callee9);
-  }));
-
-  return function mint(_x23, _x24) {
-    return _ref11.apply(this, arguments);
-  };
-}();
-
-function executeInstructions() {}
-
-function mintTokens(_x25, _x26) {
-  return _mintTokens.apply(this, arguments);
-}
-
-function _mintTokens() {
-  _mintTokens = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(candyMachine, payer) {
-    return regeneratorRuntime.wrap(function _callee16$(_context17) {
-      while (1) {
-        switch (_context17.prev = _context17.next) {
-          case 0:
-          case "end":
-            return _context17.stop();
-        }
-      }
-    }, _callee16);
-  }));
-  return _mintTokens.apply(this, arguments);
 }
 
 /***/ })
@@ -56616,17 +56620,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-/* harmony import */ var _solana_spl_token__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(130);
-/* harmony import */ var _candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(132);
-/* harmony import */ var bs58__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
-/* harmony import */ var bs58__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bs58__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _candyMachine_ts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(130);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-
 
 
 
@@ -56653,6 +56650,8 @@ statuses:
 var CANDY_MACHINE_PROGRAM = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
 
 var getProvider = function getProvider() {
+  console.log('solana ', window.solana);
+
   if ("solana" in window) {
     var provider = window.solana;
 
@@ -56742,7 +56741,7 @@ function getAnchorWallet() {
 function getState(candyMachineId) {
   return new Promise(function (resolve, reject) {
     var anchorWallet = getAnchorWallet();
-    (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__.getCandyMachineState)(anchorWallet, candyMachineId, connection).then(function (state) {
+    (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_2__.getCandyMachineState)(anchorWallet, candyMachineId, connection).then(function (state) {
       return resolve(state);
     })["catch"](function (err) {
       return reject(err);
@@ -56838,7 +56837,7 @@ function _mintToken() {
                         };
                         _context2.prev = 4;
                         _context2.next = 7;
-                        return (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__.mint)(candyMachineAccount, window.solana.publicKey, 1);
+                        return (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_2__.mint)(candyMachineAccount, window.solana.publicKey);
 
                       case 7:
                         res = _context2.sent;
