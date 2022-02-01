@@ -55319,7 +55319,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getNetworkExpire": () => (/* binding */ getNetworkExpire),
 /* harmony export */   "getAtaForMint": () => (/* binding */ getAtaForMint),
 /* harmony export */   "getCandyMachineState": () => (/* binding */ getCandyMachineState),
-/* harmony export */   "mint": () => (/* binding */ mint)
+/* harmony export */   "mint": () => (/* binding */ mint),
+/* harmony export */   "mintTokens": () => (/* binding */ mintTokens)
 /* harmony export */ });
 /* harmony import */ var _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
@@ -55512,7 +55513,7 @@ function _awaitTransactionSignatureConfirmation() {
                 }, _callee11);
               }));
 
-              return function (_x25, _x26) {
+              return function (_x27, _x28) {
                 return _ref12.apply(this, arguments);
               };
             }());
@@ -56468,13 +56469,9 @@ var mint = /*#__PURE__*/function () {
 
             _context10.t18.push.call(_context10.t18, _context10.t19);
 
-            _context10.next = 80;
-            return sendTransactions(candyMachine.program.provider.connection, candyMachine.program.provider.wallet, [instructions, cleanupInstructions], [signers, []]);
+            return _context10.abrupt("return", [[instructions, cleanupInstructions], [signers, []]]);
 
-          case 80:
-            return _context10.abrupt("return", _context10.sent);
-
-          case 81:
+          case 79:
           case "end":
             return _context10.stop();
         }
@@ -56488,6 +56485,25 @@ var mint = /*#__PURE__*/function () {
 }();
 
 function executeInstructions() {}
+
+function mintTokens(_x25, _x26) {
+  return _mintTokens.apply(this, arguments);
+}
+
+function _mintTokens() {
+  _mintTokens = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(candyMachine, payer) {
+    return regeneratorRuntime.wrap(function _callee16$(_context17) {
+      while (1) {
+        switch (_context17.prev = _context17.next) {
+          case 0:
+          case "end":
+            return _context17.stop();
+        }
+      }
+    }, _callee16);
+  }));
+  return _mintTokens.apply(this, arguments);
+}
 
 /***/ })
 /******/ 	]);
@@ -56614,8 +56630,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+ //const network = 'https://api.mainnet-beta.solana.com';
 
-var network = 'https://api.mainnet-beta.solana.com'; //const network = 'https://api.devnet.solana.com';
+var network = 'https://api.devnet.solana.com';
 
 if (network !== 'https://api.mainnet-beta.solana.com') {
   alert("WARNING! the network is not currently set to mainnet");
@@ -56709,11 +56726,18 @@ function _connect() {
 
 function getAnchorWallet() {
   var wallet = window.solana;
-  return {
-    publicKey: wallet.publicKey,
-    signAllTransactions: wallet.signAllTransactions,
-    signTransaction: wallet.signTransaction
-  };
+
+  if (wallet) {
+    return {
+      publicKey: wallet.publicKey,
+      signAllTransactions: wallet.signAllTransactions,
+      signTransaction: wallet.signTransaction
+    };
+  } else {
+    return {
+      publicKey: _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.Keypair.generate().publicKey
+    };
+  }
 }
 
 function getState(candyMachineId) {
@@ -56815,7 +56839,7 @@ function _mintToken() {
                         };
                         _context2.prev = 4;
                         _context2.next = 7;
-                        return (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__.mint)(candyMachineAccount, window.solana.publicKey);
+                        return (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_3__.mint)(candyMachineAccount, window.solana.publicKey, 1);
 
                       case 7:
                         res = _context2.sent;
@@ -56873,9 +56897,9 @@ function _mintToken() {
 }
 
 var CANDY_MACHINE_1 = '5rdSYCxms1F9rv2c32m2s9UdBj6eLhH4HQVAiuBDaL24'; // mints the one token for bradyn
+//const CANDY_MACHINE_2 = 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'; // mints 100 tokens for users
 
-var CANDY_MACHINE_2 = 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'; // mints 100 tokens for users
-//const CANDY_MACHINE_2 = 'GPk1m3uyKWYHjSK3mMVTMF3R52ntg7b5FsVDYsaqW5M6'; // mints 100 tokens for users
+var CANDY_MACHINE_2 = 'GPk1m3uyKWYHjSK3mMVTMF3R52ntg7b5FsVDYsaqW5M6'; // mints 100 tokens for users
 
 /*
 export const mintMultipleToken = async (
