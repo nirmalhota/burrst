@@ -5,8 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Bradyn Swinson</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <!-- <meta content="" name="description">
+  <meta content="" name="keywords"> -->
+  <meta property="og:title" content="Burrst Sports: Bradyn Swinson" />
+  <meta property="og:description"
+    content="44 Underdog is a collection of 101 unique art NFTs of Bradyn Swinson built on the Solana blockchain. Bradyn’s project is about bringing his fans closer together in an exclusive community where his fans will be rewarded for their long-term loyalty throughout his football career" />
+  <meta property="og:image" content="https://burrst.io/bradyn-swinson/assets/img/bs.jpg" />
 
   <!-- Favicons -->
   <link href="assets/img/favicons/favicon-32x32.png" rel="icon">
@@ -148,15 +152,15 @@
               <div class="col-md-12 pad-left30">
                 <h2>Utility</h2>
                 <p><span>5% of the mint sale</span><br>
-                  will be donated to Bradyn’s school of choice.<br>
+                  will be donated to Chapel Hill High School.<br>
                   <span>Holder #4 </span><br>
                   will receive Bradyn’s game-worn cleats.<br>
                   <span>Holder #56</span><br>
                   will receive Bradyn’s game-worn gloves.<br>
                   <span>Holder #85</span><br>
-                  will receive a signed shirt by Bradyn.<br>                  
-                  <!-- <span>10 lucky holders </span><br>
-                  will receive Bradyn signed sports cards.<br> -->
+                  will receive a signed shirt by Bradyn.<br>
+                  <span>All 101 holders</span><br>
+                  will receive Bradyn signed sports cards.<br>
                   <span>All holders </span><br>
                   will gain access to Bradyn’s exclusive chat.
                 </p>
@@ -299,7 +303,8 @@
   <script src="assets/js/libraries.min.js"></script>
   <script src="assets/js/jquery.parallax.js"></script>
   <script src="./assets/js/bundle.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
   <script>
     const solPrice = 0.6;
     // jQuery Selections
@@ -316,7 +321,7 @@
       $subBtn = $("#sub"),
       $amtBtn = $("#sol-amt"),
       $qty = $("#qty");
-  
+
     $amtBtn.text(`${solPrice} SOL`);
     setItems();
     refreshItems();
@@ -327,7 +332,7 @@
     const whenConnected = `<a href="#" class="dgreenbtn"><span class="b2">WALLET IS<span class="y2">CONNECTED</span> </span><span
               class="c2"><img src="assets/img/wallet-icon1.png" class=" img-fluid picon3" alt="wallet" /></span></a>`
     console.log();
-    if(window.localStorage.getItem("isConnected") == 'true') {
+    if (window.localStorage.getItem("isConnected") == 'true') {
       $("#connect-btn").remove();
       $("#connect-btn-div").append(whenConnected);
     }
@@ -355,17 +360,17 @@
       var isMobile = $.browser.mobile;
       console.log(navigator.platform.toUpperCase());
       console.log(isMobile);
-      if(!!isMobile){
+      if (!!isMobile) {
         window.location.href = "https://phantom.app/";
         return;
-      }      
+      }
       const resp = await sol.connect();
       if (resp.status === 0) {
         $("#connect-btn").remove();
         $("#connect-btn-div").append(whenConnected);
-        window.localStorage.setItem("isConnected",true);
+        window.localStorage.setItem("isConnected", true);
       } else {
-        window.localStorage.setItem("isConnected",false);
+        window.localStorage.setItem("isConnected", false);
         alert('some error occurred, could not connect!');
       }
     });
@@ -375,13 +380,13 @@
     }
 
     function setItems() {
-        sol.getItemsRemaining().then((itemsRemaining) => {
-          $itemsRem.text(itemsRemaining + '/101');
-        });
+      sol.getItemsRemaining().then((itemsRemaining) => {
+        $itemsRem.text(itemsRemaining + '/101');
+      });
     }
 
-    function refreshItems(){
-      setInterval(()=>{ setItems()},6000);
+    function refreshItems() {
+      setInterval(() => { setItems() }, 6000);
     }
 
     $mintBtn.click(function (e) {
