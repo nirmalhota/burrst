@@ -357,13 +357,13 @@
       //$amtBtn.text(`${1.5 * quantity} SOL`);
     });
     $connectBtn.click(async function () {
-      var isMobile = $.browser.mobile;
-      console.log(navigator.platform.toUpperCase());
-      console.log(isMobile);
-      if (!!isMobile) {
-        window.location.href = "https://phantom.app/";
-        return;
-      }
+      // var isMobile = $.browser.mobile;
+      // console.log(navigator.platform.toUpperCase());
+      // console.log(isMobile);
+      // if (!!isMobile) {
+      //   window.location.href = "https://phantom.app/";
+      //   return;
+      // }
       const resp = await sol.connect();
       if (resp.status === 0) {
         $("#connect-btn").remove();
