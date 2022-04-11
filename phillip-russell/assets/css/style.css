@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #utility h2 {
 	font-size: 48px;
-	color: rgb(255, 89, 17);
+	color: #ff3c3c;
 	display: block;
 	background: url("../img/strip1.png") no-repeat left bottom;
 	padding-bottom: 9px;
@@ -382,7 +382,7 @@ nav.navbar-expand-lg {
 }
 #bio h2 {
 	font-size: 48px;
-	color: rgb(255, 89, 17);
+	color: #ff3c3c;
 	display: block;
 	background: url("../img/strip1.png") no-repeat left bottom;
 	padding-bottom: 9px;
@@ -436,7 +436,7 @@ nav.navbar-expand-lg {
 }
 #faq h2 {
 	font-size: 48px;
-	color: rgb(255, 89, 17);
+	color: #ff3c3c;
 	display: block;
 	background: url("../img/strip1.png") no-repeat left bottom;
 	padding-bottom: 9px;
@@ -687,7 +687,7 @@ nav.navbar-expand-lg {
 	margin-left: 5px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-	color: rgb(255, 89, 17);
+	color: #ff3c3c;
 }
 .navbar .dropdown ul {
 	display: block;

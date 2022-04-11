@@ -382,7 +382,7 @@
 
     function setItems() {
       sol.getItemsRemaining().then((itemsRemaining) => {
-        $itemsRem.text(parseInt(itemsRemaining) <= 43 ? itemsRemaining : (parseInt(itemsRemaining) - 43).toString() + '/101');
+        $itemsRem.text(itemsRemaining + '/101');
       });
     }
 
