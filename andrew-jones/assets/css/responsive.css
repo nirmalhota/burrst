@@ -345,7 +345,7 @@
     letter-spacing: 2px;
     font-size: 2.2vw !important;
 }
-span.y1{color:#ff5911; font-family: "Open Sans", sans-serif; display: block; line-height: 36px !important; font-size: 2.2vw !important}	
+span.y1{color:#fff; font-family: "Open Sans", sans-serif; display: block; line-height: 36px !important; font-size: 2.2vw !important}	
 span.b2{float:left; display: block; font-size: 2.3vw !important; line-height: 46px } 
 
 }
@@ -439,7 +439,7 @@ span.b2{float:left; display: block; font-size: 2.3vw !important; line-height: 46
     letter-spacing: 2px;
     font-size: 2.2vw !important;
 }
-span.y1{color:#ff5911; font-family: "Open Sans", sans-serif; display: block; line-height: 38px !important; font-size: 2.2vw !important}	
+span.y1{color:#fff; font-family: "Open Sans", sans-serif; display: block; line-height: 38px !important; font-size: 2.2vw !important}	
 	
 span.c1{float:left; display: block;  line-height: 79px; vertical-align: middle;}
 span.b2{float:left; display: block; font-size: 2.3vw !important; line-height: 50px } 
@@ -489,7 +489,7 @@ span.b2{float:left; display: block; font-size: 2.3vw !important; line-height: 50
 
 
 	span.y1 {
-    color: #ff5911;
+    color: #fff;
     font-family: "Open Sans", sans-serif;
     display: block;
     line-height: 16px;
@@ -506,7 +506,7 @@ span.b2{float:left; display: block; font-size: 2.3vw !important; line-height: 50
 }
 	span.b2{float:left; display: block; font-size: 8.9vw !important; line-height: 42px } 
 span.c2{float:left; display: block;  line-height: 64px; vertical-align: middle; padding-left: 10px;}
-span.y2{color:#ff5911; font-family: "Open Sans", sans-serif; display: block; line-height: 16px !important; font-size: 6.0vw !important; letter-spacing: 1px;}
+span.y2{color:#fff; font-family: "Open Sans", sans-serif; display: block; line-height: 16px !important; font-size: 6.0vw !important; letter-spacing: 1px;}
 	
 	.yellow-btn-box {
     font-size: 3.5vw;
@@ -690,7 +690,7 @@ nav.navbar-expand-lg {
 
 
 	span.y1 {
-    color: #ff5911;
+    color: #fff;
     font-family: "Open Sans", sans-serif;
     display: block;
     line-height: 59px;
@@ -707,7 +707,7 @@ nav.navbar-expand-lg {
 }
 	span.b2{float:left; display: block; font-size: 6.2vw !important; line-height: 58px } 
 span.c2{float:left; display: block;  line-height: 84px; vertical-align: middle; padding-left: 10px;}
-span.y2{color:#ff5911; font-family: "Open Sans", sans-serif; display: block; line-height: 16px !important; font-size: 4.0vw !important; letter-spacing: 1px;}
+span.y2{color:#fff; font-family: "Open Sans", sans-serif; display: block; line-height: 16px !important; font-size: 4.0vw !important; letter-spacing: 1px;}
 	.yellow-btn-box {
     font-size: 3.5vw;
 }
