@@ -303,7 +303,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 35px;
 	position: absolute;
 	margin-top: 16px;
-	background-color: #0e9646;
+	background-color: #ff3c3c;
 	border-radius: 2px;
 	transform: rotate(45deg);
 	transition: all .3s ease-in;
@@ -313,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 35px;
 	position: absolute;
 	margin-top: 16px;
-	background-color: #0e9646;
+	background-color: #ff3c3c;
 	border-radius: 2px;
 	transform: rotate(-45deg);
 	transition: all .3s ease-in;
@@ -396,7 +396,7 @@ nav.navbar-expand-lg {
 	line-height: 34px;
 	padding-top: 15px
 }
-#bio span {color: #ff3c3c; text-transform: uppercase}
+#bio span {color: #fff; text-transform: uppercase}
 #bio a {
 	color: #fff;
 	background: #ff3c3c;
