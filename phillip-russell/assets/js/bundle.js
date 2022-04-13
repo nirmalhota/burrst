@@ -56509,6 +56509,24 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+/***/ }),
+/* 133 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ getConfig)
+/* harmony export */ });
+var config = {
+  network: "https://api.mainnet-beta.solana.com",
+  candyMachineProgram: 'cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ',
+  mintAddress: 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'
+};
+function getConfig() {
+  return config;
+}
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -56614,13 +56632,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "connect": () => (/* binding */ connect),
+/* harmony export */   "getState": () => (/* binding */ getState),
 /* harmony export */   "isConnected": () => (/* binding */ isConnected),
 /* harmony export */   "getItemsRemaining": () => (/* binding */ getItemsRemaining),
-/* harmony export */   "mintBradynNft": () => (/* binding */ mintBradynNft)
+/* harmony export */   "getTotalItems": () => (/* binding */ getTotalItems),
+/* harmony export */   "mintNft": () => (/* binding */ mintNft)
 /* harmony export */ });
 /* harmony import */ var _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _candyMachine_ts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(130);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(133);
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -56628,7 +56649,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var network = 'https://api.mainnet-beta.solana.com'; //const network = 'https://api.devnet.solana.com';
+
+var config = (0,_config_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
+var network = config.network; //const network = 'https://api.devnet.solana.com';
 
 if (network !== 'https://api.mainnet-beta.solana.com') {
   alert("WARNING! the network is not currently set to mainnet");
@@ -56647,7 +56670,7 @@ statuses:
 6 - could not get idl
 */
 
-var CANDY_MACHINE_PROGRAM = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey('cndy3Z4yapfJBmL3ShUp5exZKqR3z33thTzeNMm2gRZ');
+var CANDY_MACHINE_PROGRAM = new _project_serum_anchor__WEBPACK_IMPORTED_MODULE_0__.web3.PublicKey(config.candyMachineProgram);
 
 var getProvider = function getProvider() {
   console.log('solana ', window.solana);
@@ -56739,22 +56762,16 @@ function getAnchorWallet() {
 }
 
 function getState(candyMachineId) {
+  var machineId = candyMachineId ? candyMachineId : config.mintAddress;
   return new Promise(function (resolve, reject) {
     var anchorWallet = getAnchorWallet();
-    (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_2__.getCandyMachineState)(anchorWallet, candyMachineId, connection).then(function (state) {
+    (0,_candyMachine_ts__WEBPACK_IMPORTED_MODULE_2__.getCandyMachineState)(anchorWallet, machineId, connection).then(function (state) {
       return resolve(state);
     })["catch"](function (err) {
       return reject(err);
     });
   });
 }
-/*
-                mintOneToken(candyMachineAccount,resp.publicKey).then(
-                    res => console.log(res)
-                ).catch(err => console.error(err));
-*/
-
-
 function isConnected() {
   return window.solana.isConnected();
 }
@@ -56762,15 +56779,6 @@ function isConnected() {
 function mintToken(_x, _x2, _x3) {
   return _mintToken.apply(this, arguments);
 }
-/*
-
-export interface CandyMachine {
-  id: anchor.web3.PublicKey,
-  connection: anchor.web3.Connection;
-  program: anchor.Program;
-}
-*/
-
 
 function _mintToken() {
   _mintToken = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(candyMachineId, callback, quantity) {
@@ -56873,7 +56881,7 @@ function _mintToken() {
                 }, _callee2, null, [[4, 11]]);
               }));
 
-              return function (_x4) {
+              return function (_x6) {
                 return _ref.apply(this, arguments);
               };
             }())["catch"](function (err) {
@@ -56894,34 +56902,20 @@ function _mintToken() {
   return _mintToken.apply(this, arguments);
 }
 
-var CANDY_MACHINE_1 = '5rdSYCxms1F9rv2c32m2s9UdBj6eLhH4HQVAiuBDaL24'; // mints the one token for bradyn
-
-var CANDY_MACHINE_2 = 'FVqTcX93ZNKBNj7Q2v1s6oQLE6Sp5Qqmfpu2ChUWoqzF'; // mints 100 tokens for users
-//const CANDY_MACHINE_2 = 'GPk1m3uyKWYHjSK3mMVTMF3R52ntg7b5FsVDYsaqW5M6'; // mints 100 tokens for users
-
-/*
-export const mintMultipleToken = async (
-  candyMachine: any,
-  config: anchor.web3.PublicKey,
-  payer: anchor.web3.PublicKey,
-  treasury: anchor.web3.PublicKey,
-  quantity: number = 2
-)
-*/
-
-function getItemsRemaining() {
+var CANDY_MACHINE_2 = config.mintAddress;
+function getItemsRemaining(_x4) {
   return _getItemsRemaining.apply(this, arguments);
 }
 
 function _getItemsRemaining() {
-  _getItemsRemaining = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+  _getItemsRemaining = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(mintAddress) {
     var account2;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return getState(CANDY_MACHINE_2);
+            return getState(mintAddress);
 
           case 2:
             account2 = _context4.sent;
@@ -56939,8 +56933,35 @@ function _getItemsRemaining() {
   return _getItemsRemaining.apply(this, arguments);
 }
 
-function mintBradynNft(quantity, callback) {
-  mintToken(CANDY_MACHINE_2, callback, quantity);
+function getTotalItems(_x5) {
+  return _getTotalItems.apply(this, arguments);
+}
+
+function _getTotalItems() {
+  _getTotalItems = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(mintAddress) {
+    var account;
+    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return getState(mintAddress);
+
+          case 2:
+            account = _context5.sent;
+
+          case 3:
+          case "end":
+            return _context5.stop();
+        }
+      }
+    }, _callee5);
+  }));
+  return _getTotalItems.apply(this, arguments);
+}
+
+function mintNft(mintAddress, quantity, callback) {
+  mintToken(mintAddress, callback, quantity);
 }
 
 function testData() {
@@ -56948,23 +56969,23 @@ function testData() {
 }
 
 function _testData() {
-  _testData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+  _testData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
     var signatures, data;
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
-        switch (_context5.prev = _context5.next) {
+        switch (_context6.prev = _context6.next) {
           case 0:
-            _context5.next = 2;
+            _context6.next = 2;
             return connection.getConfirmedSignaturesForAddress2(new _solana_web3_js__WEBPACK_IMPORTED_MODULE_1__.PublicKey('DaDBYoyLKCw36kPrzZQ52noAwsCJnLb1ty5znqRic9Nh'));
 
           case 2:
-            signatures = _context5.sent;
+            signatures = _context6.sent;
             console.log(signatures);
-            _context5.next = 6;
+            _context6.next = 6;
             return connection.getParsedConfirmedTransaction('468mHkxW4EjgVh5BC8M3LeaydQbAn6y7qkufVh4kzYuwiFgFryGf9LuFWeFfgz1UAoVcc67UEF2NuorkMREdoucs');
 
           case 6:
-            data = _context5.sent;
+            data = _context6.sent;
             console.log(data.transaction.message.accountKeys);
             data.transaction.message.accountKeys.forEach(function (accountKey) {
               console.log(accountKey.pubkey.toBase58());
@@ -56972,50 +56993,44 @@ function _testData() {
 
           case 9:
           case "end":
-            return _context5.stop();
+            return _context6.stop();
         }
       }
-    }, _callee5);
+    }, _callee6);
   }));
   return _testData.apply(this, arguments);
 }
 
 function testLaunch() {
   return _testLaunch.apply(this, arguments);
-} //testLaunch();
-//testData();
-// const bytes = bs58.decode('468mHkxW4EjgVh5BC8M3LeaydQbAn6y7qkufVh4kzYuwiFgFryGf9LuFWeFfgz1UAoVcc67UEF2NuorkMREdoucs');
-// console.log(Transaction.from(bytes));
-// console.log(bytes);
-//getAccounts();
-
+}
 
 function _testLaunch() {
-  _testLaunch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+  _testLaunch = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
     var itemsRemaining, state;
-    return regeneratorRuntime.wrap(function _callee6$(_context6) {
+    return regeneratorRuntime.wrap(function _callee7$(_context7) {
       while (1) {
-        switch (_context6.prev = _context6.next) {
+        switch (_context7.prev = _context7.next) {
           case 0:
-            _context6.next = 2;
+            _context7.next = 2;
             return getItemsRemaining();
 
           case 2:
-            itemsRemaining = _context6.sent;
-            _context6.next = 5;
+            itemsRemaining = _context7.sent;
+            _context7.next = 5;
             return getState(CANDY_MACHINE_2);
 
           case 5:
-            state = _context6.sent;
+            state = _context7.sent;
             console.log('state: ', state);
             console.log('items: ', itemsRemaining);
 
           case 8:
           case "end":
-            return _context6.stop();
+            return _context7.stop();
         }
       }
-    }, _callee6);
+    }, _callee7);
   }));
   return _testLaunch.apply(this, arguments);
 }

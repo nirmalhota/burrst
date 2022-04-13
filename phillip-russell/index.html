@@ -265,11 +265,13 @@
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/libraries.min.js"></script>
   <script src="assets/js/jquery.parallax.js"></script>
+  <script src="assets/js/bundle.js"></script>
   <!-- <script src="./assets/js/bundle.js"></script> -->
   <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
   <script>
     const solPrice = 2;
+    const mintAddress = '4ykFBgNxKedTEzWRWuCtnRqgJSLAneMqV9eV8e9g1QCS';
     // jQuery Selections
     var $html = $('html'),
       $container = $('#container'),
@@ -285,6 +287,7 @@
       $amtBtn = $("#sol-amt"),
       $qty = $("#qty");
 
+    //console.log(sol.getItemsRemaining(mintAddress).then(res => console.log(res)));
     $amtBtn.text(`${solPrice} SOL`);
     setItems();
     refreshItems();
@@ -343,7 +346,7 @@
     }
 
     function setItems() {
-      sol.getItemsRemaining().then((itemsRemaining) => {
+      sol.getItemsRemaining(mintAddress).then((itemsRemaining) => {
         //$itemsRem.text(parseInt(itemsRemaining) <= 43 ? itemsRemaining : (parseInt(itemsRemaining) - 43).toString() + '/25');
         $itemsRem.text(itemsRemaining + '/25');
       });
@@ -355,7 +358,7 @@
 
     $mintBtn.click(function (e) {
       const quantity = parseInt($qty.text());
-      sol.mintPhillipnNft(quantity, function (res) {
+      sol.mintNft(mintAddress,quantity, function (res) {
         alert(res.message);
       })
     });
