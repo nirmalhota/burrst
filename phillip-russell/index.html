@@ -110,7 +110,7 @@
             <div class="content-box1b">
               <div id="yellow-btn1">
                 <div class="yellow-btn-box">
-                  <span style="padding-left: 17px;" class="g-txt" id="items-rem">25/25</span><br>
+                  <span style="padding-left: 38px;" class="g-txt" id="items-rem">25/25</span><br>
                   <div style="padding-left: 17px;" class="b-txt"> Available</div><i class="bi bi-dash-circle-fill"
                     id="sub"></i>&nbsp;<span id="qty">1</span>&nbsp;<i class="bi bi-plus-circle-fill"
                     id="add"></i>&nbsp;<span id="sol-amt">2 SOL</span>
@@ -358,7 +358,7 @@
 
     $mintBtn.click(function (e) {
       const quantity = parseInt($qty.text());
-      sol.mintNft(mintAddress,quantity, function (res) {
+      sol.mintNft(mintAddress, quantity, function (res) {
         alert(res.message);
       })
     });

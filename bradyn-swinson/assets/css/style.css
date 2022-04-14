@@ -31,7 +31,7 @@ body {
 .content-box1b{float: left; vertical-align: middle; display: flex;justify-content: center; margin:15% 0px 15% 0px; }
 .content-box2{width:100%; float: left;}
 .content-box3{width:100%; float: left; }
-.content-box3 img.f2{    object-fit: contain;  height: 66vh;}
+.content-box3 img.f2{    object-fit: contain;  height: 70vh;}
 .mid-pic {
 	position: absolute;
 	top: 190px;
